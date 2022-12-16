@@ -1,0 +1,32 @@
+[
+	{
+		"title": "Home",
+		"href": "/",
+		"target": "_self"
+	},
+	{
+		"title": "Shows",
+		"href": "/shows",
+		"target": "_self"
+	},
+	{
+		"title": "Discography",
+		"href": "/discography",
+		"target": "_self"
+	},
+	{
+		"title": "Media",
+		"href": "/media",
+		"target": "_self"
+	},
+	{
+		"title": "Merch",
+		"href": "https://onewiththeriverbed.bandcamp.com/merch",
+		"target": "_blank"
+	},
+	{
+		"title": "Contact",
+		"href": "/contact",
+		"target": "_self"
+	}
+]
