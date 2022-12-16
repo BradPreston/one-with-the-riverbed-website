@@ -5,6 +5,7 @@ import Head from "next/head"
 import { useContext } from "react"
 import { ActiveImageContext } from "../context/ActiveImageContext"
 import { ImageModal } from "../components/modals"
+import s from "../styles/Media.module.css"
 
 type Video = {
 	link: string
@@ -31,7 +32,7 @@ export default function Media() {
 				</section>
 				<section className="text-center">
 					<H2 title="Videos" />
-					<div className="grid md:grid-cols-3 min-[500px]:grid-cols-2 gap-7 mt-4 mb-8">
+					<div className={s.galleryGrid}>
 						{gallery.videos.map(({ link }: Video) => (
 							<iframe
 								key={link}
@@ -46,7 +47,7 @@ export default function Media() {
 				</section>
 				<section className="text-center">
 					<H2 title="Live Pictures" />
-					<div className="grid md:grid-cols-3 min-[500px]:grid-cols-2 gap-7 mt-4 mb-8">
+					<div className={s.galleryGrid}>
 						{gallery.live.map(({ link, id }: Photo) => (
 							<div className="aspect-video w-full relative" key={id}>
 								<Image
@@ -61,11 +62,7 @@ export default function Media() {
 					</div>
 				</section>
 			</section>
-			{activeImage ? (
-				<section className="w-screen h-screen z-50 top-0 left-0">
-					<ImageModal link={activeImage} />
-				</section>
-			) : null}
+			{activeImage ? <ImageModal link={activeImage} /> : null}
 		</>
 	)
 }

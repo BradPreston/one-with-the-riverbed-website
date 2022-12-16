@@ -84,6 +84,7 @@ export default function Header() {
 									title={navLink.title}
 									key={navLink.title}
 									target={navLink.target}
+									onClick={() => setMobileNavOpen(false)}
 								>
 									{navLink.title}
 								</Link>

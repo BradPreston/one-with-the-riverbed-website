@@ -7,7 +7,7 @@
 }
 
 .mobileNavIcon {
-	@apply w-12 h-12 flex px-3 py-3 items-center justify-center bg-sand rounded-full z-[999] relative shadow-sm;
+	@apply w-12 h-12 flex px-3 py-3 items-center justify-center bg-sand rounded-full z-[999] relative shadow-xl;
 }
 
 .hamburger,
