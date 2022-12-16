@@ -1,0 +1,11 @@
+.wrapper {
+	@apply w-screen h-screen bg-charcoal bg-opacity-95 z-[9999] fixed top-0 left-0 flex items-center justify-center;
+}
+
+.inner {
+	@apply flex justify-end w-[700px] h-[600px] max-sm:w-full max-sm:h-[400px] relative;
+}
+
+.close {
+	@apply bg-sand z-10 w-10 h-10 flex items-center justify-center rounded-full cursor-pointer text-charcoal hover:text-sand hover:bg-charcoal transition-all duration-75 max-sm:mx-10;
+}

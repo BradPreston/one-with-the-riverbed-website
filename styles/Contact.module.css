@@ -1,0 +1,15 @@
+.personalInfo {
+	@apply grid max-w-lg mx-auto gap-6 mb-6;
+}
+
+.inputWrapper {
+	@apply flex flex-col w-full;
+}
+
+.input {
+	@apply w-full rounded py-1 px-2 bg-charcoal text-sand placeholder-sand placeholder-opacity-40 resize-none;
+}
+
+.sendButton {
+	@apply bg-sand text-charcoal py-3 rounded hover:text-sand hover:bg-charcoal transition-all duration-75 w-full;
+}
