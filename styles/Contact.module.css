@@ -7,7 +7,7 @@
 }
 
 .input {
-	@apply w-full rounded py-1 px-2 bg-charcoal text-sand placeholder-sand placeholder-opacity-40 resize-none;
+	@apply w-full rounded py-1 px-2 bg-charcoal text-sand placeholder-sand placeholder-opacity-40 resize-none border-sand border-[1px] border-opacity-30;
 }
 
 .sendButton {
