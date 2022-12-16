@@ -13,7 +13,7 @@ export default function Contact() {
 				<title>Show Dates | One with the Riverbed</title>
 			</Head>
 			<H1 title="Contact Us" />
-			<section className="max-w-3xl mx-auto">
+			<section className="max-w-3xl mx-auto overflow-hidden">
 				<form onSubmit={sendEmail}>
 					<div className={s.personalInfo}>
 						<p className={s.inputWrapper}>

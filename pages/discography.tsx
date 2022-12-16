@@ -10,7 +10,7 @@ export default function Discography() {
 			<Head>
 				<title>Discography | One with the Riverbed</title>
 			</Head>
-			<section className="max-w-3xl mx-auto">
+			<section className="max-w-3xl mx-auto overflow-hidden">
 				<H1 title="Discography" />
 				<>
 					{albums.map((album: AlbumType) => (
