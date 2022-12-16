@@ -78,16 +78,16 @@ export default function Header() {
 						}
 					>
 						<nav>
-							<Link href="/">Home</Link>
-							<Link href="/shows">Shows</Link>
-							<Link href="/discography">Discography</Link>
-							<Link href="/media">Media</Link>
-							<Link
-								href="https://onewiththeriverbed.bandcamp.com/merch"
-								target="_blank"
-							>
-								Merch
-							</Link>
+							{links.map((navLink: NavLink) => (
+								<Link
+									href={navLink.href}
+									title={navLink.title}
+									key={navLink.title}
+									target={navLink.target}
+								>
+									{navLink.title}
+								</Link>
+							))}
 						</nav>
 					</div>
 				</header>
