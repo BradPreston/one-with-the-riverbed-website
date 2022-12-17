@@ -14,10 +14,10 @@ export default function Contact() {
 	async function sendEmail(e: any) {
 		e.preventDefault()
 		const data = {
-			firstName,
-			lastName,
-			email,
-			message
+			firstname: firstName,
+			lastname: lastName,
+			email: email,
+			message: message
 		}
 
 		if (!executeRecaptcha) {
@@ -30,7 +30,7 @@ export default function Contact() {
 				return
 			}
 
-			const result = await fetch("/api/contact", {
+			const result = await fetch("/api/sendgrid", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json"

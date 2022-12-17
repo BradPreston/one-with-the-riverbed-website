@@ -17,7 +17,7 @@ export default function Album(album: AlbumType) {
 				<div className="flex-col mr-6 ml-4 max-[400px]:ml-0 max-[400px]:mt-4 relative w-full">
 					<H2 title={album.title} />
 					<H3 style="text-md" title="Tracklist" />
-					<ol className="list-decimal pl-5 mb-3">
+					<ol className="list-decimal pl-6 mb-3">
 						{album.tracklist.map((track: string) => (
 							<li key={track}>{track}</li>
 						))}
