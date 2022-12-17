@@ -56,6 +56,10 @@ main {
 	}
 }
 
+.grecaptcha-badge {
+	bottom: 115px !important;
+}
+
 .bg {
 	background-image: url("/home-bg.jpg");
 	background-position: center;
