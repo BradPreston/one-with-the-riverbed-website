@@ -24,6 +24,7 @@ export default async function sendEmail(
 			})
 	} catch (error: any) {
 		console.log(error)
+		console.log("error body:", error.response.body)
 		return res.status(error.statusCode || 500).json({ error: error.message })
 	}
 
