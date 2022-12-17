@@ -52,9 +52,9 @@ export default async function handler(
 
 			transporter.sendMail(mailData, function (err: Error, info: any) {
 				if (err) {
-					console.log(err)
+					// console.log(err)
 				} else {
-					console.log(info)
+					// console.log(info)
 				}
 			})
 

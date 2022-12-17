@@ -39,7 +39,10 @@ export default function Contact() {
 			})
 
 			if (result) {
-				console.log(result)
+				setFirstName("")
+				setLastName("")
+				setEmail("")
+				setMessage("")
 			}
 		} catch (error) {
 			console.log(error)
@@ -63,6 +66,7 @@ export default function Contact() {
 								id="firstname"
 								name="firstname"
 								placeholder="Scott"
+								value={firstName}
 								onChange={(e) => setFirstName(e.target.value)}
 							/>
 						</p>
@@ -74,6 +78,7 @@ export default function Contact() {
 								id="lastname"
 								name="lastname"
 								placeholder="Stapp"
+								value={lastName}
 								onChange={(e) => setLastName(e.target.value)}
 							/>
 						</p>
@@ -85,6 +90,7 @@ export default function Contact() {
 								id="email"
 								name="email"
 								placeholder="scott.stapp@creedrocks.com"
+								value={email}
 								onChange={(e) => setEmail(e.target.value)}
 							/>
 						</p>
@@ -97,6 +103,7 @@ export default function Contact() {
 								rows={10}
 								className={s.input}
 								placeholder="Type your message here"
+								value={message}
 								onChange={(e) => setMessage(e.target.value)}
 							></textarea>
 						</p>
