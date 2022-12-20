@@ -56,7 +56,7 @@ export default function Contact() {
 			</Head>
 			<H1 title="Contact Us" />
 			<section className="max-w-3xl mx-auto overflow-hidden">
-				<form onSubmit={sendEmail}>
+				<form className="mb-10" onSubmit={sendEmail}>
 					<div className={s.personalInfo}>
 						<p className={s.inputWrapper}>
 							<label htmlFor="firstname">First Name:*</label>

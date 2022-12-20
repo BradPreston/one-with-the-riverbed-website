@@ -44,7 +44,9 @@ export default function Album(album: AlbumType) {
 					{album.reviews.map((review: Review) => (
 						<li key={review.review_link} className="mb-10">
 							<H3 style="text-md" title={review.author} />
-							<p className="mb-5 text-sand">{review.excerpt}</p>
+							<p className="mb-5 text-sand">
+								{review.excerpt.slice(0, 120) + "..."}
+							</p>
 							<ButtonBase
 								style="text-sm"
 								href={review.review_link}
