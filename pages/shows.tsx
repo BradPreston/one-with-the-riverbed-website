@@ -26,10 +26,7 @@ export default function Shows({ shows }: APIShows) {
 
 		let info: Show = {
 			id: show.id,
-			purchase_tickets_url: show.url.replace(
-				`app_id=${process.env.APP_ID}`,
-				""
-			),
+			show_info_url: show.url.replace(`app_id=${process.env.APP_ID}`, ""),
 			venue: show.venue.name,
 			date: `${day}, ${month.toUpperCase()} ${dt.date()}, ${year}`,
 			location: show.venue.location
@@ -51,7 +48,7 @@ export default function Shows({ shows }: APIShows) {
 								date={show.date}
 								venue={show.venue}
 								location={show.location}
-								purchase_tickets_url={show.purchase_tickets_url}
+								show_info_url={show.show_info_url}
 							/>
 						</li>
 					))}
