@@ -1,5 +1,6 @@
 import { NavLink } from "../../types/NavLink"
 import Link from "next/link"
+import Image from "next/image"
 const links = require("../../data/navlinks.json")
 import { useRouter } from "next/router"
 import { useEffect, useState, useContext } from "react"
@@ -32,7 +33,14 @@ export default function Header() {
 		<>
 			{isMobile === false ? (
 				<header className={`${s.header} ${activeImage ? "z-0" : "z-20"}`}>
-					<Link href="/">One with the Riverbed</Link>
+					<Link className="relative w-28 h-28" href="/">
+						<Image
+							src="/logo.png"
+							alt="One with the Riverbed Logo"
+							objectFit="contain"
+							fill
+						/>
+					</Link>
 
 					<nav id="nav" className="flex justify-end">
 						{links.map((navLink: NavLink) => (

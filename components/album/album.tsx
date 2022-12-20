@@ -39,7 +39,7 @@ export default function Album(album: AlbumType) {
 				<p>{album.studio}</p>
 			</section>
 			<section className="max-w-3xl mx-auto mb-10">
-				<H2 title="Reviews" />
+				<H2 style="pb-3" title="Reviews" />
 				<ul className="grid sm:grid-cols-2 gap-4">
 					{album.reviews.map((review: Review) => (
 						<li key={review.review_link} className="mb-10">

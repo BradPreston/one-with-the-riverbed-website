@@ -5,7 +5,7 @@ import { twMerge } from "tailwind-merge"
 import { useState, useEffect } from "react"
 
 export default function ShowDate(
-	{ date, venue, location, purchase_tickets_url }: Show,
+	{ date, venue, location, show_info_url }: Show,
 	style: string
 ) {
 	const classes = twMerge(
@@ -39,8 +39,8 @@ export default function ShowDate(
 					<p className="pr-3 text-sand">{location}</p>
 				) : null}
 				<ButtonBase
-					title="Tickets"
-					href={purchase_tickets_url}
+					title="Info"
+					href={show_info_url}
 					target="_blank"
 					style="max-md:py-2 max-md:px-5"
 				/>

@@ -56,7 +56,7 @@ export type Show = {
 	date: string
 	venue: string
 	location: string
-	purchase_tickets_url: string
+	show_info_url: string
 }
 
 export type APIShows = {
