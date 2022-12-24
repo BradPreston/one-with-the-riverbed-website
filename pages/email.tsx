@@ -13,7 +13,7 @@ export default function Email() {
 			return
 		} else {
 			setVerified(true)
-			router.push("mailto:mailto:onewiththeriverbed@gmail.com")
+			router.push("mailto:onewiththeriverbed@gmail.com")
 			// captchaRef.current?.reset()
 		}
 	}
