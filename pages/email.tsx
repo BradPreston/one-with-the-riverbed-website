@@ -24,7 +24,7 @@ export default function Email() {
 				<title>Contact | One with the Riverbed</title>
 			</Head>
 			<section className="max-w-3xl mx-auto overflow-hidden text-sand flex items-center justify-center flex-col h-full">
-				<p>We just need to verify you're a real person</p>
+				<p>We just need to verify you&apos;re a real person</p>
 				{verified === false ? (
 					<form>
 						<ReCAPTCHA
@@ -38,7 +38,7 @@ export default function Email() {
 				) : null}
 				{verified ? (
 					<p>
-						Email us at:{" "}
+						Email us at:
 						<a
 							className="underline"
 							title="mailto:onewiththeriverbed@gmail.com"
