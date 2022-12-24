@@ -26,10 +26,10 @@ export default function Media() {
 			</Head>
 			<section className="max-w-3xl mx-auto">
 				<H1 title="Media" />
-				<section className="text-center">
+				{/* <section className="text-center">
 					<H2 title="Promotional Pictures" />
 					<div className="grid grid-cols-3 gap-7 mt-4 mb-8"></div>
-				</section>
+				</section> */}
 				<section className="text-center">
 					<H2 title="Videos" />
 					<div className={s.galleryGrid}>
@@ -54,6 +54,7 @@ export default function Media() {
 									src={link}
 									alt={link}
 									fill
+									loading="lazy"
 									objectFit="cover"
 									onClick={() => setActiveImage(link)}
 								/>

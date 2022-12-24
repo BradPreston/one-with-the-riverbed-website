@@ -39,6 +39,7 @@ export default function Header() {
 							alt="One with the Riverbed Logo"
 							objectFit="contain"
 							fill
+							loading="eager"
 						/>
 					</Link>
 

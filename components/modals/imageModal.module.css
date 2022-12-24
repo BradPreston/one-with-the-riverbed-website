@@ -3,9 +3,9 @@
 }
 
 .inner {
-	@apply flex justify-end w-[700px] h-[600px] max-sm:w-full max-sm:h-[400px] relative;
+	@apply flex justify-end w-[700px] h-[600px] max-sm:w-11/12 max-sm:h-[400px] relative;
 }
 
 .close {
-	@apply bg-sand z-10 w-10 h-10 flex items-center justify-center rounded-full cursor-pointer text-charcoal hover:text-sand hover:bg-charcoal transition-all duration-75 max-sm:mx-10;
+	@apply bg-sand z-10 w-10 h-10 flex items-center justify-center rounded-full -mt-16 cursor-pointer text-charcoal hover:text-sand hover:bg-charcoal transition-all duration-75;
 }
