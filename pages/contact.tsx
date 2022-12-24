@@ -44,11 +44,11 @@ export default function Contact() {
 			</Head>
 			<section className="max-w-3xl mx-auto overflow-hidden">
 				<H1 title="Contact" />
-				<ul>
+				<ul className="w-fit mx-auto">
 					{socials.map((social: Social) => (
 						<li
 							key={social.title}
-							className="flex text-sand text-xl items-center mb-6"
+							className="flex text-sand text-xl items-center mb-6 w-fit"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
