@@ -38,7 +38,7 @@ export default function Email() {
 				) : null}
 				{verified ? (
 					<p>
-						Email us at:
+						Email us at:{" "}
 						<a
 							className="underline"
 							title="mailto:onewiththeriverbed@gmail.com"
