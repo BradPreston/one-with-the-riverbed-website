@@ -7,5 +7,5 @@
 }
 
 .close {
-	@apply bg-sand z-10 w-10 h-10 flex items-center justify-center rounded-full -mt-16 cursor-pointer text-charcoal hover:text-sand hover:bg-charcoal transition-all duration-75;
+	@apply bg-sand z-10 w-10 h-10 flex items-center justify-center rounded-full max-sm:-mt-16 cursor-pointer text-charcoal hover:text-sand hover:bg-charcoal transition-all duration-75;
 }
