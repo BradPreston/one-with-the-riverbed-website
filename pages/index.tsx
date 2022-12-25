@@ -19,7 +19,6 @@ export default function Home() {
 		<>
 			<Head>
 				<title>Home | One with the Riverbed</title>
-				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<div className="bg w-full h-screen flex items-center justify-center">
 				{isMobile === true ? (
