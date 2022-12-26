@@ -40,7 +40,11 @@ export default function Album(album: AlbumType) {
 			</section>
 			<section className="max-w-3xl mx-auto mb-10">
 				<H2 style="pb-3" title="Reviews" />
-				<ul className="grid sm:grid-cols-2 gap-4">
+				<ul
+					className={`grid ${
+						album.reviews.length > 1 ? "sm:grid-cols-2" : null
+					} gap-4`}
+				>
 					{album.reviews.map((review: Review) => (
 						<li key={review.review_link} className="mb-10">
 							<H3 style="text-md" title={review.author} />
