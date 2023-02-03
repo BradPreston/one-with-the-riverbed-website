@@ -1,24 +1,20 @@
 import { H1 } from "../components/headings"
+import { useState, useEffect } from "react"
+import useSWR from "swr"
 import { ShowDate } from "../components/shows"
-import { Show, APIShows } from "../types/Shows"
+import { Show, APIShow } from "../types/Shows"
 import moment from "moment"
 import Head from "next/head"
 
-export async function getStaticProps() {
-	const res = await fetch(
-		`https://rest.bandsintown.com/artists/one%20with%20the%20riverbed/events?app_id=${process.env.APP_ID}`
+export default function Shows() {
+	// @ts-ignore
+	const fetcher = (...args) => fetch(...args).then((res) => res.json())
+	const { data, error } = useSWR(
+		'/api/getShowDates',
+		fetcher
 	)
-	const data = await res.json()
 
-	return {
-		props: {
-			shows: data
-		}
-	}
-}
-
-export default function Shows({ shows }: APIShows) {
-	const showDates = shows.map((show) => {
+	const showDates = data?.map((show: APIShow) => {
 		let dt = moment(show.starts_at, "YYYY-MM-DD HH:mm:ss")
 		let day = dt.format("dddd").substring(0, 3)
 		let month = dt.format("MMMM").substring(0, 3)
@@ -42,7 +38,7 @@ export default function Shows({ shows }: APIShows) {
 			<section className="max-w-3xl mx-auto">
 				<H1 title="Show Dates" />
 				<ul>
-					{showDates.map((show: Show) => (
+					{showDates?.map((show: Show) => (
 						<li key={show.id}>
 							<ShowDate
 								date={show.date}
