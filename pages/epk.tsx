@@ -1,8 +1,25 @@
 import { FormEvent, useEffect, useRef, useState } from "react"
-import songData from "../data/audio"
+// import songData from "../data/audio"
 import { Player } from "../components/player"
 
-export default function EPK() {
+export async function getStaticProps() {
+	const res = await fetch("/api/getSongs")
+	const data = await res.json()
+	return {
+		props: {
+			songData: data
+		}
+	}
+}
+
+type song = {
+	title: string
+	url: string
+	progress: number
+	length: number
+}
+
+export default function EPK(songData: song[]) {
 	const [isPlaying, setIsPlaying] = useState(false)
 	const [songs, setSongs] = useState(songData)
 	const [currentSong, setCurrentSong] = useState(songs[0])
@@ -61,7 +78,7 @@ export default function EPK() {
 
 	return (
 		<div className="flex justify-center items-center">
-			{/* {!validPassword ? (
+			{!validPassword ? (
 				<>
 					<form ref={form} onSubmit={submitPass}>
 						<input
@@ -74,28 +91,28 @@ export default function EPK() {
 					</form>
 					<div className="absolute top-20" ref={passwordError}></div>
 				</>
-			) : ( */}
-			<>
-				{isLoading ? null : (
-					<>
-						<audio
-							src={currentSong.url}
-							ref={audioElem}
-							onTimeUpdate={onPlaying}
-						/>
-						<Player
-							songs={songs}
-							setSongs={setSongs}
-							isPlaying={isPlaying}
-							setIsPlaying={setIsPlaying}
-							audioElem={audioElem}
-							currentSong={currentSong}
-							setCurrentSong={setCurrentSong}
-						/>
-					</>
-				)}
-			</>
-			{/* )} */}
+			) : (
+				<>
+					{isLoading ? null : (
+						<>
+							<audio
+								src={currentSong.url}
+								ref={audioElem}
+								onTimeUpdate={onPlaying}
+							/>
+							<Player
+								songs={songs}
+								setSongs={setSongs}
+								isPlaying={isPlaying}
+								setIsPlaying={setIsPlaying}
+								audioElem={audioElem}
+								currentSong={currentSong}
+								setCurrentSong={setCurrentSong}
+							/>
+						</>
+					)}
+				</>
+			)}
 		</div>
 	)
 }

@@ -41,15 +41,19 @@ awsSongs.forEach(({ aws_title, song_title }: awsSong) => {
 	}
 	const command = new GetObjectCommand(params)
 
-	getSignedUrl(client, command, { expiresIn: 60000 }).then((data: string) => {
-		const newSong: song = {
-			title: song_title,
-			url: data,
-			progress: 0,
-			length: 0
-		}
-		songData.push(newSong)
-	})
+	getSignedUrl(client, command, { expiresIn: 60000 })
+		.then((data: string) => {
+			const newSong: song = {
+				title: song_title,
+				url: data,
+				progress: 0,
+				length: 0
+			}
+			songData.push(newSong)
+		})
+		.catch((err) => {
+			throw new Error("An error ocurred getting signed url", err)
+		})
 })
 
 export default songData
