@@ -61,7 +61,7 @@ export default function EPK() {
 
 	return (
 		<div className="flex justify-center items-center">
-			{!validPassword ? (
+			{/* {!validPassword ? (
 				<>
 					<form ref={form} onSubmit={submitPass}>
 						<input
@@ -74,28 +74,28 @@ export default function EPK() {
 					</form>
 					<div className="absolute top-20" ref={passwordError}></div>
 				</>
-			) : (
-				<>
-					{isLoading ? null : (
-						<>
-							<audio
-								src={currentSong.url}
-								ref={audioElem}
-								onTimeUpdate={onPlaying}
-							/>
-							<Player
-								songs={songs}
-								setSongs={setSongs}
-								isPlaying={isPlaying}
-								setIsPlaying={setIsPlaying}
-								audioElem={audioElem}
-								currentSong={currentSong}
-								setCurrentSong={setCurrentSong}
-							/>
-						</>
-					)}
-				</>
-			)}
+			) : ( */}
+			<>
+				{isLoading ? null : (
+					<>
+						<audio
+							src={currentSong.url}
+							ref={audioElem}
+							onTimeUpdate={onPlaying}
+						/>
+						<Player
+							songs={songs}
+							setSongs={setSongs}
+							isPlaying={isPlaying}
+							setIsPlaying={setIsPlaying}
+							audioElem={audioElem}
+							currentSong={currentSong}
+							setCurrentSong={setCurrentSong}
+						/>
+					</>
+				)}
+			</>
+			{/* )} */}
 		</div>
 	)
 }

@@ -51,7 +51,7 @@ export default function EPK() {
 			}
 			if (res.status == 200) {
 				setValidPassword(true)
-				window.location.pathname = "/test"
+				window.location.pathname = "/epk"
 			}
 		} catch (err) {
 			console.log("An error occured: ", err)
