@@ -14,7 +14,8 @@ type song = {
 // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
 const cors = Cors({
 	methods: ["POST", "GET", "HEAD"],
-	origin: "*"
+	origin: "*",
+	allowedHeaders: ["Access-Control-Allow-Origin"]
 })
 
 // Helper method to wait for a middleware to execute before continuing
