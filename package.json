@@ -17,6 +17,7 @@
     "@types/react": "18.0.26",
     "@types/react-dom": "18.0.9",
     "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
     "eslint": "8.29.0",
     "eslint-config-next": "13.0.6",
     "moment": "^2.29.4",
@@ -35,6 +36,7 @@
   "devDependencies": {
     "@hcaptcha/types": "^1.0.3",
     "@types/bcrypt": "^5.0.0",
+    "@types/cors": "^2.8.13",
     "@types/react-google-recaptcha": "^2.1.5",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.20",
