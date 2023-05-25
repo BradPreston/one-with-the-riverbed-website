@@ -58,6 +58,7 @@ export default function AudioPlayer() {
 				`${process.env.NEXT_PUBLIC_API_BASE}/api/getSongs`,
 				{
 					method: "POST",
+					credentials: "same-origin",
 					body: JSON.stringify({
 						awsTitle: song.awsTitle,
 						songTitle: song.songTitle
