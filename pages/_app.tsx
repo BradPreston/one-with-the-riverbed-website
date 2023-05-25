@@ -13,7 +13,7 @@ export default function App({ Component, pageProps }: AppProps) {
 		window.location.pathname === "/contact"
 			? setIsContactPage(true)
 			: setIsContactPage(false)
-	})
+	}, [])
 
 	return (
 		<>

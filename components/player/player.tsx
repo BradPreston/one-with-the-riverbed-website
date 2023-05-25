@@ -24,7 +24,7 @@ type song = {
 
 type props = {
 	songs: song[]
-	setSongs: Dispatch<SetStateAction<song[]>>
+	// setSongs: Dispatch<SetStateAction<song[]>>
 	isPlaying: boolean
 	setIsPlaying: Dispatch<SetStateAction<boolean>>
 	audioElem: MutableRefObject<any>
@@ -34,7 +34,7 @@ type props = {
 
 export default function Player({
 	songs,
-	setSongs,
+	// setSongs,
 	isPlaying,
 	setIsPlaying,
 	audioElem,

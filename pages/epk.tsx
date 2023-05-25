@@ -1,28 +1,58 @@
 import { FormEvent, useEffect, useRef, useState } from "react"
-// import songData from "../data/audio"
 import { Player } from "../components/player"
+import { AudioPlayer } from "../components/audioPlayer"
 
-export async function getStaticProps() {
-	const res = await fetch("/api/getSongs")
-	const data = await res.json()
-	return {
-		props: {
-			songData: data
-		}
-	}
-}
+// type awsSong = {
+// 	awsTitle: string
+// 	songTitle: string
+// }
 
-type song = {
-	title: string
-	url: string
-	progress: number
-	length: number
-}
+// type song = {
+// 	title: string
+// 	url: string
+// 	progress: number
+// 	length: number
+// }
 
-export default function EPK(songData: song[]) {
+// export async function getStaticProps() {
+// 	const awsSongs = [
+// 		{
+// 			awsTitle: "pokemon_little_root.mp3",
+// 			songTitle: "Pokemon - Little Root"
+// 		},
+// 		{
+// 			awsTitle: "shovel_knight_stirke_the_earth.mp3",
+// 			songTitle: "Shovel Knight - Strike the Earth"
+// 		}
+// 	]
+
+// 	async function getSongData(song: awsSong) {
+// 		const res = await fetch("http://localhost:3000/api/getSongs", {
+// 			method: "POST",
+// 			body: JSON.stringify({
+// 				awsTitle: song.awsTitle,
+// 				songTitle: song.songTitle
+// 			})
+// 		})
+// 		const data = await res.json()
+// 		return data
+// 	}
+
+// 	const songs: song[] = await Promise.all(
+// 		awsSongs.map((song) => getSongData(song))
+// 	)
+
+// 	return {
+// 		props: {
+// 			songData: songs
+// 		}
+// 	}
+// }
+
+export default function EPK() {
 	const [isPlaying, setIsPlaying] = useState(false)
-	const [songs, setSongs] = useState(songData)
-	const [currentSong, setCurrentSong] = useState(songs[0])
+	// const [songs, setSongs] = useState<song[]>()
+	// const [currentSong, setCurrentSong] = useState<song>(songData[0])
 	const [isLoading, setIsLoading] = useState(true)
 	const [passwordInput, setPasswordInput] = useState<string>("")
 	const [validPassword, setValidPassword] = useState(false)
@@ -30,24 +60,26 @@ export default function EPK(songData: song[]) {
 	const passwordError = useRef<HTMLDivElement>(null)
 	const form = useRef<HTMLFormElement>(null)
 
-	useEffect(() => {
-		if (isPlaying) audioElem.current?.play()
-		else audioElem.current?.pause()
+	// useEffect(() => {
+	// 	if (isPlaying) audioElem.current?.play()
+	// 	else audioElem.current?.pause()
 
-		if (songs) setIsLoading(false)
-		else setIsLoading(true)
-	}, [isPlaying, currentSong, songs])
+	// 	if (songData) setIsLoading(false)
+	// 	else setIsLoading(true)
+	// }, [isPlaying, songData, currentSong])
 
-	function onPlaying() {
-		const duration = audioElem.current?.duration
-		const currentTime = audioElem.current?.currentTime
+	// function onPlaying() {
+	// 	if (currentSong) {
+	// 		const duration = audioElem.current?.duration
+	// 		const currentTime = audioElem.current?.currentTime
 
-		if (currentTime && duration)
-			currentSong.progress = (currentTime / duration) * 100
-		if (duration) currentSong.length = duration
+	// 		if (currentTime && duration)
+	// 			currentSong.progress = (currentTime / duration) * 100
+	// 		if (duration) currentSong.length = duration
 
-		setCurrentSong({ ...currentSong })
-	}
+	// 		// setCurrentSong({ ...currentSong })
+	// 	}
+	// }
 
 	async function submitPass(e: FormEvent) {
 		e.preventDefault()
@@ -78,7 +110,7 @@ export default function EPK(songData: song[]) {
 
 	return (
 		<div className="flex justify-center items-center">
-			{!validPassword ? (
+			{/* {!validPassword ? (
 				<>
 					<form ref={form} onSubmit={submitPass}>
 						<input
@@ -91,28 +123,33 @@ export default function EPK(songData: song[]) {
 					</form>
 					<div className="absolute top-20" ref={passwordError}></div>
 				</>
-			) : (
+			) : ( */}
+			<>
+				{/* {isLoading ? null : ( */}
 				<>
-					{isLoading ? null : (
-						<>
-							<audio
-								src={currentSong.url}
-								ref={audioElem}
-								onTimeUpdate={onPlaying}
-							/>
-							<Player
-								songs={songs}
-								setSongs={setSongs}
-								isPlaying={isPlaying}
-								setIsPlaying={setIsPlaying}
-								audioElem={audioElem}
-								currentSong={currentSong}
-								setCurrentSong={setCurrentSong}
-							/>
-						</>
-					)}
+					{/* {currentSong ? ( */}
+					<>
+						{/* <audio
+							src={currentSong.url}
+							ref={audioElem}
+							onTimeUpdate={onPlaying}
+						/> */}
+						<AudioPlayer></AudioPlayer>
+						{/* <Player
+							songs={songData}
+							// setSongs={setSongs}
+							isPlaying={isPlaying}
+							setIsPlaying={setIsPlaying}
+							audioElem={audioElem}
+							currentSong={currentSong}
+							setCurrentSong={setCurrentSong}
+						/> */}
+					</>
+					{/* ) : null} */}
 				</>
-			)}
+				{/* )} */}
+			</>
+			{/* )} */}
 		</div>
 	)
 }
