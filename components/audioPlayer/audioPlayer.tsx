@@ -54,13 +54,16 @@ export default function AudioPlayer() {
 		]
 
 		async function getSongData(song: awsSong) {
-			const res = await fetch("http://localhost:3000/api/getSongs", {
-				method: "POST",
-				body: JSON.stringify({
-					awsTitle: song.awsTitle,
-					songTitle: song.songTitle
-				})
-			})
+			const res = await fetch(
+				`${process.env.NEXT_PUBLIC_API_BASE}/api/getSongs`,
+				{
+					method: "POST",
+					body: JSON.stringify({
+						awsTitle: song.awsTitle,
+						songTitle: song.songTitle
+					})
+				}
+			)
 			const data = await res.json()
 			return data
 		}
@@ -109,51 +112,56 @@ export default function AudioPlayer() {
 		audioPlayer.current!.currentTime = parseInt(progressBar.current!.value)
 		updateProgressBar()
 	}
-
 	return (
 		<div className={styles.audioPlayer}>
-			<audio
-				ref={audioPlayer}
-				preload="metadata"
-				src={playlist && playlist[0].url}
-				onChange={changeRange}
-			></audio>
-			<button className={styles.forwardBackward}>
-				<BsArrowLeftShort /> 30
-			</button>
-			<button className={styles.playPause} onClick={togglePlayPause}>
-				{isPlaying ? <FaPause /> : <FaPlay className={styles.play} />}
-			</button>
-			<button className={styles.forwardBackward}>
-				30 <BsArrowRightShort />
-			</button>
+			{playlist && (
+				<>
+					<audio
+						ref={audioPlayer}
+						preload="metadata"
+						src={playlist[0].url}
+						onChange={changeRange}
+					></audio>
+					<button className={styles.forwardBackward}>
+						<BsArrowLeftShort /> 30
+					</button>
+					<button className={styles.playPause} onClick={togglePlayPause}>
+						{isPlaying ? <FaPause /> : <FaPlay className={styles.play} />}
+					</button>
+					<button className={styles.forwardBackward}>
+						30 <BsArrowRightShort />
+					</button>
 
-			{/* current time */}
-			<div className={styles.currentTime}>{calculateTime(currentTime)}</div>
+					{/* current time */}
+					<div className={styles.currentTime}>{calculateTime(currentTime)}</div>
 
-			{/* progress bar */}
-			<div>
-				<input
-					type="range"
-					className={styles.progressBar}
-					defaultValue="0"
-					ref={progressBar}
-					onChange={changeRange}
-				/>
-			</div>
+					{/* progress bar */}
+					<div>
+						<input
+							type="range"
+							className={styles.progressBar}
+							defaultValue="0"
+							ref={progressBar}
+							onChange={changeRange}
+						/>
+					</div>
 
-			{/* duration */}
-			<div className={styles.duration}>
-				{duration && !isNaN(duration) ? calculateTime(duration) : "0:00"}
-			</div>
+					{/* duration */}
+					<div className={styles.duration}>
+						{duration && !isNaN(duration) ? calculateTime(duration) : "0:00"}
+					</div>
 
-			<ul>
-				{playlist?.map((song: song) => (
-					<li key={song.title}>
-						<button onClick={() => setCurrentSong(song)}>{song.title}</button>
-					</li>
-				))}
-			</ul>
+					<ul>
+						{playlist?.map((song: song) => (
+							<li key={song.title}>
+								<button onClick={() => setCurrentSong(song)}>
+									{song.title}
+								</button>
+							</li>
+						))}
+					</ul>
+				</>
+			)}
 		</div>
 	)
 }
