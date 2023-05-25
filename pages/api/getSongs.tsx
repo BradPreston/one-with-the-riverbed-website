@@ -30,6 +30,8 @@ function runMiddleware(
 				return reject(result)
 			}
 
+			res.setHeader("Access-Control-Allow-Origin", "*")
+
 			return resolve(result)
 		})
 	})
