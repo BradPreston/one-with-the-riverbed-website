@@ -15,6 +15,14 @@ const nextConfig = {
 				pathname: "/lifeinmichigan.com/wp-content/gallery/jeff-fest-2022/*"
 			}
 		]
+	},
+	async rewrites() {
+		return [
+			{
+				source: "/api/:path*",
+				destination: "https://api.onewiththeriverbed.com/:path*"
+			}
+		]
 	}
 }
 
