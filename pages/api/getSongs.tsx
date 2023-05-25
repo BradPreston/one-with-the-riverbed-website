@@ -39,6 +39,7 @@ export default async function GetSongs(
 			progress: 0,
 			length: 0
 		}
+		res.setHeader("Access-Control-Allow-Origin", "*")
 		res.status(200).json(song)
 	} catch (err) {
 		res.status(400).json(err)
