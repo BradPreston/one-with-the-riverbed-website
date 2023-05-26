@@ -6,16 +6,18 @@ import styles from "./audioPlayer.module.css"
 type song = {
 	title: string
 	url: string
-	progress: number
-	length: number
 }
 
-export default function AudioPlayer() {
+type Props = {
+	playlist: song[]
+}
+
+export default function AudioPlayer({ playlist }: Props) {
 	// state
 	const [isPlaying, setIsPlaying] = useState(false)
 	const [duration, setDuration] = useState(0)
 	const [currentTime, setCurrentTime] = useState(0)
-	const [playlist, setPlaylist] = useState<song[]>()
+	// const [playlist, setPlaylist] = useState<song[]>(data)
 	const [currentSong, setCurrentSong] = useState<song>()
 
 	// refs
@@ -35,44 +37,6 @@ export default function AudioPlayer() {
 	useEffect(() => {
 		if (currentSong) audioPlayer.current!.src = currentSong.url
 	}, [currentSong])
-
-	useEffect(() => {
-		type awsSong = {
-			awsTitle: string
-			songTitle: string
-		}
-
-		const awsSongs = [
-			{
-				awsTitle: "pokemon_little_root.mp3",
-				songTitle: "Pokemon - Little Root"
-			},
-			{
-				awsTitle: "shovel_knight_stirke_the_earth.mp3",
-				songTitle: "Shovel Knight - Strike the Earth"
-			}
-		]
-
-		async function getSongData(song: awsSong) {
-			const res = await fetch(
-				`${process.env.NEXT_PUBLIC_API_BASE}/api/getSongs`,
-				{
-					method: "POST",
-					credentials: "same-origin",
-					body: JSON.stringify({
-						awsTitle: song.awsTitle,
-						songTitle: song.songTitle
-					})
-				}
-			)
-			const data = await res.json()
-			return data
-		}
-
-		Promise.all(awsSongs.map((song: awsSong) => getSongData(song))).then(
-			(songs: song[]) => setPlaylist(songs)
-		)
-	}, [])
 
 	function calculateTime(secs: number) {
 		const minutes = Math.floor(secs / 60)
@@ -115,54 +79,50 @@ export default function AudioPlayer() {
 	}
 	return (
 		<div className={styles.audioPlayer}>
-			{playlist && (
-				<>
-					<audio
-						ref={audioPlayer}
-						preload="metadata"
-						src={playlist[0].url}
+			<>
+				<audio
+					ref={audioPlayer}
+					preload="metadata"
+					src={playlist[0].url}
+					onChange={changeRange}
+				></audio>
+				<button className={styles.forwardBackward}>
+					<BsArrowLeftShort /> 30
+				</button>
+				<button className={styles.playPause} onClick={togglePlayPause}>
+					{isPlaying ? <FaPause /> : <FaPlay className={styles.play} />}
+				</button>
+				<button className={styles.forwardBackward}>
+					30 <BsArrowRightShort />
+				</button>
+
+				{/* current time */}
+				<div className={styles.currentTime}>{calculateTime(currentTime)}</div>
+
+				{/* progress bar */}
+				<div>
+					<input
+						type="range"
+						className={styles.progressBar}
+						defaultValue="0"
+						ref={progressBar}
 						onChange={changeRange}
-					></audio>
-					<button className={styles.forwardBackward}>
-						<BsArrowLeftShort /> 30
-					</button>
-					<button className={styles.playPause} onClick={togglePlayPause}>
-						{isPlaying ? <FaPause /> : <FaPlay className={styles.play} />}
-					</button>
-					<button className={styles.forwardBackward}>
-						30 <BsArrowRightShort />
-					</button>
+					/>
+				</div>
 
-					{/* current time */}
-					<div className={styles.currentTime}>{calculateTime(currentTime)}</div>
+				{/* duration */}
+				<div className={styles.duration}>
+					{duration && !isNaN(duration) ? calculateTime(duration) : "0:00"}
+				</div>
 
-					{/* progress bar */}
-					<div>
-						<input
-							type="range"
-							className={styles.progressBar}
-							defaultValue="0"
-							ref={progressBar}
-							onChange={changeRange}
-						/>
-					</div>
-
-					{/* duration */}
-					<div className={styles.duration}>
-						{duration && !isNaN(duration) ? calculateTime(duration) : "0:00"}
-					</div>
-
-					<ul>
-						{playlist?.map((song: song) => (
-							<li key={song.title}>
-								<button onClick={() => setCurrentSong(song)}>
-									{song.title}
-								</button>
-							</li>
-						))}
-					</ul>
-				</>
-			)}
+				<ul>
+					{playlist.map((song: song) => (
+						<li key={song.title}>
+							<button onClick={() => setCurrentSong(song)}>{song.title}</button>
+						</li>
+					))}
+				</ul>
+			</>
 		</div>
 	)
 }

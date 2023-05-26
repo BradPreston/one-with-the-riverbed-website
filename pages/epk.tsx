@@ -1,6 +1,17 @@
 import { FormEvent, useEffect, useRef, useState } from "react"
 import { Player } from "../components/player"
 import { AudioPlayer } from "../components/audioPlayer"
+import useSWR from "swr"
+
+type song = {
+	title: string
+	url: string
+}
+
+const fetcher = (url: string) =>
+	fetch(url)
+		.then((res) => res.json())
+		.then((data: song[]) => data)
 
 // type awsSong = {
 // 	awsTitle: string
@@ -50,6 +61,7 @@ import { AudioPlayer } from "../components/audioPlayer"
 // }
 
 export default function EPK() {
+	const { data, error } = useSWR(process.env.NEXT_PUBLIC_PIPEDREAM, fetcher)
 	const [isPlaying, setIsPlaying] = useState(false)
 	// const [songs, setSongs] = useState<song[]>()
 	// const [currentSong, setCurrentSong] = useState<song>(songData[0])
@@ -134,7 +146,7 @@ export default function EPK() {
 							ref={audioElem}
 							onTimeUpdate={onPlaying}
 						/> */}
-						<AudioPlayer></AudioPlayer>
+						{data && <AudioPlayer playlist={data}></AudioPlayer>}
 						{/* <Player
 							songs={songData}
 							// setSongs={setSongs}
