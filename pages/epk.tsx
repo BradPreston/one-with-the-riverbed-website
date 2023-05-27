@@ -2,6 +2,7 @@ import { FormEvent, useEffect, useRef, useState } from "react"
 import { Player } from "../components/player"
 import { AudioPlayer } from "../components/audioPlayer"
 import useSWR from "swr"
+import { BsDatabaseAdd } from "react-icons/bs"
 
 type song = {
 	title: string
@@ -13,10 +14,10 @@ const fetcher = (url: string) =>
 		.then((res) => res.json())
 		.then((data: song[]) => data)
 
-// type awsSong = {
-// 	awsTitle: string
-// 	songTitle: string
-// }
+type awsSong = {
+	awsTitle: string
+	songTitle: string
+}
 
 // type song = {
 // 	title: string
@@ -25,43 +26,38 @@ const fetcher = (url: string) =>
 // 	length: number
 // }
 
-// export async function getStaticProps() {
-// 	const awsSongs = [
-// 		{
-// 			awsTitle: "pokemon_little_root.mp3",
-// 			songTitle: "Pokemon - Little Root"
-// 		},
-// 		{
-// 			awsTitle: "shovel_knight_stirke_the_earth.mp3",
-// 			songTitle: "Shovel Knight - Strike the Earth"
-// 		}
-// 	]
+export async function getServerSideProps() {
+	// const awsSongs = [
+	// 	{
+	// 		awsTitle: "pokemon_little_root.mp3",
+	// 		songTitle: "Pokemon - Little Root"
+	// 	},
+	// 	{
+	// 		awsTitle: "shovel_knight_stirke_the_earth.mp3",
+	// 		songTitle: "Shovel Knight - Strike the Earth"
+	// 	}
+	// ]
 
-// 	async function getSongData(song: awsSong) {
-// 		const res = await fetch("http://localhost:3000/api/getSongs", {
-// 			method: "POST",
-// 			body: JSON.stringify({
-// 				awsTitle: song.awsTitle,
-// 				songTitle: song.songTitle
-// 			})
-// 		})
-// 		const data = await res.json()
-// 		return data
-// 	}
+	// async function getSongData() {
+	const res = await fetch("https://owtr-api.onrender.com")
+	const data = await res.json()
+	// return data
+	// }
 
-// 	const songs: song[] = await Promise.all(
-// 		awsSongs.map((song) => getSongData(song))
-// 	)
+	return {
+		props: {
+			data
+		}
+	}
+}
 
-// 	return {
-// 		props: {
-// 			songData: songs
-// 		}
-// 	}
-// }
+type Props = {
+	data: song[]
+}
 
-export default function EPK() {
-	const { data, error } = useSWR("https://owtr-api.onrender.com", fetcher)
+export default function EPK({ data }: Props) {
+	// const { data, error } = useSWR("localhost:5555", fetcher)
+	// console.log(data)
 	const [isPlaying, setIsPlaying] = useState(false)
 	// const [songs, setSongs] = useState<song[]>()
 	// const [currentSong, setCurrentSong] = useState<song>(songData[0])
