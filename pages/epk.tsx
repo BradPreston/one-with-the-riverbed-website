@@ -61,7 +61,7 @@ const fetcher = (url: string) =>
 // }
 
 export default function EPK() {
-	const { data, error } = useSWR(process.env.NEXT_PUBLIC_PIPEDREAM, fetcher)
+	const { data, error } = useSWR("https://owtr-api.onrender.com", fetcher)
 	const [isPlaying, setIsPlaying] = useState(false)
 	// const [songs, setSongs] = useState<song[]>()
 	// const [currentSong, setCurrentSong] = useState<song>(songData[0])
