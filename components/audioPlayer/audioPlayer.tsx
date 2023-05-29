@@ -1,6 +1,5 @@
-import { useState, useRef, useEffect } from "react"
-import { BsArrowLeftShort, BsArrowRightShort } from "react-icons/bs"
-import { FaPlay, FaPause } from "react-icons/fa"
+import { useState, useRef, useEffect, MouseEvent } from "react"
+import { FaPlay, FaPause, FaStepForward, FaStepBackward } from "react-icons/fa"
 import styles from "./audioPlayer.module.css"
 
 type song = {
@@ -17,7 +16,6 @@ export default function AudioPlayer({ playlist }: Props) {
 	const [isPlaying, setIsPlaying] = useState(false)
 	const [duration, setDuration] = useState(0)
 	const [currentTime, setCurrentTime] = useState(0)
-	// const [playlist, setPlaylist] = useState<song[]>(data)
 	const [currentSong, setCurrentSong] = useState<song>()
 
 	// refs
@@ -35,7 +33,16 @@ export default function AudioPlayer({ playlist }: Props) {
 	}, [audioPlayer?.current?.onloadedmetadata, audioPlayer?.current?.readyState])
 
 	useEffect(() => {
-		if (currentSong) audioPlayer.current!.src = currentSong.url
+		if (currentSong) {
+			audioPlayer.current!.src = currentSong.url
+
+			audioPlayer.current!.onloadedmetadata = function () {
+				const seconds = Math.floor(audioPlayer!.current!.duration)
+				setDuration(seconds)
+				progressBar.current!.max = seconds.toString()
+				setIsPlaying(false)
+			}
+		}
 	}, [currentSong])
 
 	function calculateTime(secs: number) {
@@ -46,16 +53,18 @@ export default function AudioPlayer({ playlist }: Props) {
 	}
 
 	function togglePlayPause() {
-		// get the value of isPlaying before updating it on the next line
-		const prevValue = isPlaying
-		setIsPlaying(!prevValue)
+		if (audioPlayer.current!.src !== "") {
+			// get the value of isPlaying before updating it on the next line
+			const prevValue = isPlaying
+			setIsPlaying(!prevValue)
 
-		if (!prevValue) {
-			audioPlayer.current?.play()
-			animationRef.current = requestAnimationFrame(whilePlaying)
-		} else {
-			audioPlayer.current?.pause()
-			cancelAnimationFrame(animationRef.current!)
+			if (!prevValue) {
+				audioPlayer.current?.play()
+				animationRef.current = requestAnimationFrame(whilePlaying)
+			} else {
+				audioPlayer.current?.pause()
+				cancelAnimationFrame(animationRef.current!)
+			}
 		}
 	}
 
@@ -77,51 +86,64 @@ export default function AudioPlayer({ playlist }: Props) {
 		audioPlayer.current!.currentTime = parseInt(progressBar.current!.value)
 		updateProgressBar()
 	}
+
 	return (
 		<div className={styles.audioPlayer}>
 			<>
-				<audio
-					ref={audioPlayer}
-					preload="metadata"
-					src={playlist[0].url}
-					onChange={changeRange}
-				></audio>
-				<button className={styles.forwardBackward}>
-					<BsArrowLeftShort /> 30
-				</button>
-				<button className={styles.playPause} onClick={togglePlayPause}>
-					{isPlaying ? <FaPause /> : <FaPlay className={styles.play} />}
-				</button>
-				<button className={styles.forwardBackward}>
-					30 <BsArrowRightShort />
-				</button>
-
-				{/* current time */}
-				<div className={styles.currentTime}>{calculateTime(currentTime)}</div>
-
-				{/* progress bar */}
-				<div>
-					<input
-						type="range"
-						className={styles.progressBar}
-						defaultValue="0"
-						ref={progressBar}
+				<div className={styles.controls}>
+					<audio
+						ref={audioPlayer}
+						preload="metadata"
+						src={undefined}
 						onChange={changeRange}
-					/>
+					></audio>
+					<div className={styles.audioBtns}>
+						<button className={styles.forwardBackward}>
+							<FaStepBackward />
+						</button>
+						<button className={styles.playPause} onClick={togglePlayPause}>
+							{isPlaying ? <FaPause /> : <FaPlay className={styles.play} />}
+						</button>
+						<button className={styles.forwardBackward}>
+							<FaStepForward />
+						</button>
+					</div>
+
+					{/* progress bar */}
+					<div className={styles.progressBarWrapper}>
+						{/* current time */}
+						<div className={styles.currentTime}>
+							{calculateTime(currentTime)}
+						</div>
+						<input
+							type="range"
+							className={styles.progressBar}
+							defaultValue="0"
+							ref={progressBar}
+							onChange={changeRange}
+						/>
+						{/* duration */}
+						<div className={styles.duration}>
+							{duration && !isNaN(duration) ? calculateTime(duration) : "0:00"}
+						</div>
+					</div>
+					<p>{currentSong ? currentSong.title : ""}</p>
 				</div>
 
-				{/* duration */}
-				<div className={styles.duration}>
-					{duration && !isNaN(duration) ? calculateTime(duration) : "0:00"}
+				<div className={styles.playlist}>
+					<ul>
+						{playlist.map((song: song, track: number) => (
+							<li key={song.title}>
+								<button
+									onClick={() => setCurrentSong(song)}
+									className={styles.song}
+								>
+									{track + 1}. {song.title}
+								</button>
+							</li>
+						))}
+					</ul>
 				</div>
-
-				<ul>
-					{playlist.map((song: song) => (
-						<li key={song.title}>
-							<button onClick={() => setCurrentSong(song)}>{song.title}</button>
-						</li>
-					))}
-				</ul>
 			</>
 		</div>
 	)
