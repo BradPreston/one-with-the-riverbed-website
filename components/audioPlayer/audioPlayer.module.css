@@ -36,8 +36,13 @@
 .audioBtns {
 	display: flex;
 	align-items: center;
-	justify-content: space-evenly;
+	justify-content: space-between;
 	width: 100%;
+	margin-bottom: 20px;
+}
+
+.currentSong {
+	height: 20px;
 }
 
 .playPause,
@@ -201,6 +206,7 @@
 
 .song {
 	transition: all 0.15s;
+	margin-bottom: 10px;
 }
 
 .song:hover {
