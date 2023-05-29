@@ -127,6 +127,7 @@ export default function AudioPlayer({ playlist }: Props) {
 						preload="metadata"
 						src={undefined}
 						onChange={changeRange}
+						title={currentSong?.title}
 					></audio>
 					<div className={styles.audioBtns}>
 						<button
