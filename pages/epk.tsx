@@ -61,7 +61,7 @@ export default function EPK({ data }: Props) {
 
 	return (
 		<div className="flex justify-center items-center">
-			{!validPassword ? (
+			{/* {!validPassword ? (
 				<>
 					<form ref={form} onSubmit={submitPass}>
 						<input
@@ -74,9 +74,9 @@ export default function EPK({ data }: Props) {
 					</form>
 					<div className="absolute top-20" ref={passwordError}></div>
 				</>
-			) : (
-				<>{data && <AudioPlayer playlist={data}></AudioPlayer>}</>
-			)}
+			) : ( */}
+			<>{data && <AudioPlayer playlist={data}></AudioPlayer>}</>
+			{/* )} */}
 		</div>
 	)
 }
