@@ -23,7 +23,7 @@ export default function EPK() {
 				passwordError.current!.innerText = "Incorrect password"
 			}
 			if (res.status == 200) {
-				window.location.href = "https://onewiththeriverbed.com/owtr-epk"
+				window.location.href = "http://localhost:3000/owtr-epk"
 			}
 		} catch (err) {
 			console.log("An error occured: ", err)

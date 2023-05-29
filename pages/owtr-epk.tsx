@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react"
 import { AudioPlayer } from "../components/audioPlayer"
 
 type song = {
@@ -25,6 +26,13 @@ export async function getStaticProps() {
 }
 
 export default function EPK({ data }: Props) {
+	useEffect(() => {
+		const referrer = document.referrer.split("/")
+		if (referrer[referrer.length - 1] !== "epk") {
+			window.location.pathname = "/epk"
+		}
+	}, [])
+
 	return (
 		<div className="flex justify-center items-center">
 			<>{data && <AudioPlayer playlist={data}></AudioPlayer>}</>
