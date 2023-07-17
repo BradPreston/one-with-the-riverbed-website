@@ -27,7 +27,7 @@ export async function getStaticProps() {
 }
 
 export default function EPK({ data }: Props) {
-	const [hideBio, setHideBio] = useState(true)
+	const [showBio, setShowBio] = useState(false)
 
 	const tracklist: song[] = [
 		{ title: "Adaption" },
@@ -57,7 +57,7 @@ export default function EPK({ data }: Props) {
 	}, [])
 
 	function showOrHideBio() {
-		setHideBio(!hideBio);
+		setShowBio(!showBio);
 	}
 
 	return (
@@ -65,7 +65,7 @@ export default function EPK({ data }: Props) {
 			<div id="bio" className="max-w-3xl flex flex-col m-auto mb-5 text-sand">
 				<p className="mb-5">One with the Riverbed is a five-piece post-metal band from Kalamazoo, Michigan. Since forming in 2017, the band has strived to push the boundaries of the genre by incorporating elements of atmospheric black metal with dissonant textures and dynamic shifts. Absence, the band’s first full-length album following an EP in 2018, garnered international attention upon its release in 2021, earning accolades from publications such as Metal Hammer, No Clean Singing, and Toilet ov Hell. </p>
 
-				{hideBio ? 
+				{showBio ? 
 				<>
 					<p className="mb-5">In preparation of releasing their second full-length album, Succumb, One with the Riverbed seeks collaboration with a label that can provide distribution, promotion, and artist development. With a distinct fusion of haunting melodies, visceral riffs, and enveloping soundscapes, Succumb shows the band embracing their core musical identity while venturing into previously unexplored realms. Lyrical themes include nostalgia, temporality, and the human condition.</p>
 
@@ -75,7 +75,7 @@ export default function EPK({ data }: Props) {
 				null}
 			</div>
 
-			<button className="mx-auto flex mb-5 text-sand underline" onClick={showOrHideBio}>Show {hideBio ? "Less" : "More"}</button>
+			<button className="mx-auto flex mb-5 text-sand underline" onClick={showOrHideBio}>Show {showBio ? "Less" : "More"}</button>
 
 			<div className="flex justify-center items-center">
 				<>{data && <AudioPlayer playlist={tracklist}></AudioPlayer>}</>
