@@ -87,3 +87,17 @@ svg {
 		background: black;
 	}
 }
+
+.hideBio {
+	height: 300px;
+	overflow: hidden;
+	transition: all .5s;
+}
+
+@media only screen and (min-width: 600px) {
+	.hideBio {
+		height: 130px;
+		overflow: hidden;
+		position: relative;
+	}
+}

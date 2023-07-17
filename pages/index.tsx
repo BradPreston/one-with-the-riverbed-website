@@ -24,7 +24,7 @@ export default function Home() {
 				{isMobile === true ? (
 					<div className="relative w-80 h-80">
 						<Image
-							src="/logo.png"
+							src="/logo-2023.png"
 							alt="One with the Riverbed Logo"
 							fill
 							objectFit="contain"

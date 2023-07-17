@@ -23,12 +23,16 @@ type song = {
 
 const awsSongs = [
 	{
-		aws_title: "pokemon_little_root.mp3",
-		song_title: "Pokemon - Little Root"
+		aws_title: "Burden.wav",
+		song_title: "Burden"
 	},
 	{
-		aws_title: "shovel_knight_stirke_the_earth.mp3",
-		song_title: "Shovel Knight - Strike the Earth"
+		aws_title: "Dominion.wav",
+		song_title: "Dominion"
+	},
+	{
+		aws_title: "Infested.wav",
+		song_title: "Infested"
 	}
 ]
 

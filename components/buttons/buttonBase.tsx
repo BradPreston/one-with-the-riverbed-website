@@ -1,7 +1,7 @@
 import { twMerge } from "tailwind-merge"
 
 interface Button {
-	href: string
+	href?: string
 	target?: "_blank" | "_self"
 	title: string
 	style?: string

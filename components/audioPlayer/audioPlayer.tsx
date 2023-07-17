@@ -5,7 +5,7 @@ import styles from "./audioPlayer.module.css"
 
 type song = {
 	title: string
-	url: string
+	url?: string
 }
 
 type Props = {
@@ -18,6 +18,7 @@ export default function AudioPlayer({ playlist }: Props) {
 	const [duration, setDuration] = useState(0)
 	const [currentTime, setCurrentTime] = useState(0)
 	const [currentSong, setCurrentSong] = useState<song>()
+	const [songsWithUrls, setSongsWithUrls] = useState<song[]>();
 
 	// refs
 	const audioPlayer = useRef<HTMLAudioElement>(null) // reference audio component
@@ -34,7 +35,7 @@ export default function AudioPlayer({ playlist }: Props) {
 	}, [audioPlayer?.current?.onloadedmetadata, audioPlayer?.current?.readyState])
 
 	useEffect(() => {
-		if (currentSong) {
+		if (currentSong && currentSong.url) {
 			audioPlayer.current!.src = currentSong.url
 
 			audioPlayer.current!.onloadedmetadata = function () {
@@ -46,6 +47,14 @@ export default function AudioPlayer({ playlist }: Props) {
 			}
 		}
 	}, [currentSong])
+
+	useEffect(() => {
+		const songs: song[] = []
+		playlist.forEach((song: song) => {
+			if (song.url) songs.push(song);
+		})
+		setSongsWithUrls(songs);
+	}, [playlist])
 
 	function calculateTime(secs: number) {
 		const minutes = Math.floor(secs / 60)
@@ -101,20 +110,21 @@ export default function AudioPlayer({ playlist }: Props) {
 	}
 
 	function prevSong() {
-		if (currentSong == playlist[0]) {
-			setCurrentSong(playlist[playlist.length - 1])
+		if (currentSong == songsWithUrls![0]) {
+			setCurrentSong(songsWithUrls![songsWithUrls!.length - 1])
 		} else {
-			const currentIndex = playlist.indexOf(currentSong!)
-			setCurrentSong(playlist[currentIndex - 1])
+			const currentIndex = songsWithUrls!.indexOf(currentSong!)
+			setCurrentSong(songsWithUrls![currentIndex - 1])
 		}
 	}
 
 	function nextSong() {
-		const currentIndex = playlist.indexOf(currentSong!)
-		if (currentIndex === playlist.length - 1) {
-			setCurrentSong(playlist[0])
+		const currentIndex = songsWithUrls!.indexOf(currentSong!)
+
+		if (currentIndex === songsWithUrls!.length - 1) {
+			setCurrentSong(songsWithUrls![0])
 		} else {
-			setCurrentSong(playlist[currentIndex + 1])
+			setCurrentSong(songsWithUrls![currentIndex + 1])
 		}
 	}
 
@@ -192,13 +202,17 @@ export default function AudioPlayer({ playlist }: Props) {
 					<ul>
 						{playlist.map((song: song, track: number) => (
 							<li key={song.title}>
-								<button
-									onClick={() => setCurrentSong(song)}
-									className={styles.song}
-									title={`Play ${song.title}`}
-								>
-									{track + 1}. {song.title}
-								</button>
+								{song.url ?
+									<button
+										onClick={() => setCurrentSong(song)}
+										className={styles.song}
+										title={`Play ${song.title}`}
+									>
+										{track + 1}. {song.title}
+									</button>
+									:
+									<p className={styles.titleOnly}>{track + 1}. {song.title}</p>
+								}
 							</li>
 						))}
 					</ul>

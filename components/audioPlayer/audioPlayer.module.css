@@ -212,3 +212,9 @@
 .song:hover {
 	color: #fff;
 }
+
+.titleOnly {
+	cursor: pointer;
+	opacity: 50%;
+	margin-bottom: 10px;
+}

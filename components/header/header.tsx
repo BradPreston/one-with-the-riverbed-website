@@ -35,11 +35,12 @@ export default function Header() {
 				<header className={`${s.header} ${activeImage ? "z-0" : "z-20"}`}>
 					<Link className="relative w-28 h-28" href="/">
 						<Image
-							src="/logo.png"
+							src="/logo-2023.png"
 							alt="One with the Riverbed Logo"
 							objectFit="contain"
 							fill
 							loading="eager"
+							className="p-3"
 						/>
 					</Link>
 
