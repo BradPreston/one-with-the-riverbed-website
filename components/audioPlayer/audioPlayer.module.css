@@ -6,7 +6,7 @@
 	align-items: center;
 	width: 300px;
 	color: var(--primary);
-	margin: 0 auto;
+	/* margin: 0 auto; */
 }
 
 .controls {
