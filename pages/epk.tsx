@@ -2,7 +2,6 @@ import { FormEvent, useRef, useState } from "react"
 
 export default function EPK() {
 	const [passwordInput, setPasswordInput] = useState<string>("")
-	const [validPassword, setValidPassword] = useState(false)
 	const passwordError = useRef<HTMLDivElement>(null)
 	const form = useRef<HTMLFormElement>(null)
 

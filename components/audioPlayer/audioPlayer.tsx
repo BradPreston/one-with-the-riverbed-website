@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, MouseEvent } from "react"
+import { useState, useRef, useEffect } from "react"
 import { FaPlay, FaPause, FaStepForward, FaStepBackward } from "react-icons/fa"
 import { GrForwardTen, GrBackTen } from "react-icons/gr"
 import styles from "./audioPlayer.module.css"
@@ -15,33 +15,20 @@ type Props = {
 export default function AudioPlayer({ playlist }: Props) {
 	// state
 	const [isPlaying, setIsPlaying] = useState(false)
-	const [duration, setDuration] = useState(0)
-	const [currentTime, setCurrentTime] = useState(0)
 	const [currentSong, setCurrentSong] = useState<song>()
-	const [songsWithUrls, setSongsWithUrls] = useState<song[]>();
+	const [songsWithUrls, setSongsWithUrls] = useState<song[]>()
 
 	// refs
 	const audioPlayer = useRef<HTMLAudioElement>(null) // reference audio component
-	// const progressBar = useRef<HTMLInputElement>(null) // reference to progress bar
 	const animationRef = useRef<number>() // references the animation
 
 	// useEffect
-	useEffect(() => {
-		if (audioPlayer.current) {
-			const seconds = Math.floor(audioPlayer.current.duration)
-			setDuration(seconds)
-			// progressBar.current!.max = seconds.toString()
-		}
-	}, [audioPlayer?.current?.onloadedmetadata, audioPlayer?.current?.readyState])
-
 	useEffect(() => {
 		if (currentSong && currentSong.url) {
 			audioPlayer.current!.src = currentSong.url
 
 			audioPlayer.current!.onloadedmetadata = function () {
 				const seconds = Math.floor(audioPlayer!.current!.duration)
-				setDuration(seconds)
-				// progressBar.current!.max = seconds.toString()
 				setIsPlaying(true)
 				audioPlayer.current!.play()
 			}
@@ -51,17 +38,10 @@ export default function AudioPlayer({ playlist }: Props) {
 	useEffect(() => {
 		const songs: song[] = []
 		playlist.forEach((song: song) => {
-			if (song.url) songs.push(song);
+			if (song.url) songs.push(song)
 		})
-		setSongsWithUrls(songs);
+		setSongsWithUrls(songs)
 	}, [playlist])
-
-	function calculateTime(secs: number) {
-		const minutes = Math.floor(secs / 60)
-		const seconds = Math.floor(secs % 60)
-		const returnedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`
-		return `${minutes}:${returnedSeconds}`
-	}
 
 	function togglePlayPause() {
 		if (audioPlayer.current!.src !== "") {
@@ -79,26 +59,11 @@ export default function AudioPlayer({ playlist }: Props) {
 		}
 	}
 
-	// function updateProgressBar() {
-	// 	progressBar.current!.style.setProperty(
-	// 		"--seek-before-width",
-	// 		`${(parseInt(progressBar.current!.value) / duration) * 100}%`
-	// 	)
-	// 	setCurrentTime(parseInt(progressBar.current!.value))
-	// }
-
 	function whilePlaying() {
-		// progressBar.current!.value = audioPlayer.current!.currentTime.toString()
-		// updateProgressBar()
 		animationRef.current = requestAnimationFrame(whilePlaying)
 		if (audioPlayer.current?.currentTime === audioPlayer.current?.duration) {
 			setIsPlaying(false)
 		}
-	}
-
-	function changeRange() {
-		// audioPlayer.current!.currentTime = parseInt(progressBar.current!.value)
-		// updateProgressBar()
 	}
 
 	function backTen() {
@@ -136,7 +101,6 @@ export default function AudioPlayer({ playlist }: Props) {
 						ref={audioPlayer}
 						preload="metadata"
 						src={undefined}
-						onChange={changeRange}
 						title={currentSong?.title}
 					></audio>
 					<div className={styles.audioBtns}>
@@ -177,22 +141,6 @@ export default function AudioPlayer({ playlist }: Props) {
 						</button>
 					</div>
 
-					{/* progress bar */}
-					{/* <div className={styles.progressBarWrapper}>
-						<div className={styles.currentTime}>
-							{calculateTime(currentTime)}
-						</div>
-						<input
-							type="range"
-							className={styles.progressBar}
-							defaultValue="0"
-							ref={progressBar}
-							onChange={changeRange}
-						/>
-						<div className={styles.duration}>
-							{duration && !isNaN(duration) ? calculateTime(duration) : "0:00"}
-						</div>
-					</div> */}
 					<p className={styles.currentSong}>
 						{currentSong ? currentSong.title : ""}
 					</p>
@@ -202,7 +150,7 @@ export default function AudioPlayer({ playlist }: Props) {
 					<ul>
 						{playlist.map((song: song, track: number) => (
 							<li key={song.title}>
-								{song.url ?
+								{song.url ? (
 									<button
 										onClick={() => setCurrentSong(song)}
 										className={styles.song}
@@ -210,9 +158,11 @@ export default function AudioPlayer({ playlist }: Props) {
 									>
 										{track + 1}. {song.title}
 									</button>
-									:
-									<p className={styles.titleOnly}>{track + 1}. {song.title}</p>
-								}
+								) : (
+									<p className={styles.titleOnly}>
+										{track + 1}. {song.title}
+									</p>
+								)}
 							</li>
 						))}
 					</ul>

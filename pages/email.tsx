@@ -14,7 +14,6 @@ export default function Email() {
 		} else {
 			setVerified(true)
 			router.push("mailto:onewiththeriverbed@gmail.com")
-			// captchaRef.current?.reset()
 		}
 	}
 
@@ -29,7 +28,6 @@ export default function Email() {
 					<form>
 						<ReCAPTCHA
 							sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
-							// ref={captchaRef}
 							onChange={onReCAPTCHAChange}
 							onSubmit={() => captchaRef.current.execute()}
 							className="py-6"
