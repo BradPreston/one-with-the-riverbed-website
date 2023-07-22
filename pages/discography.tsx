@@ -9,6 +9,10 @@ export default function Discography() {
 		<>
 			<Head>
 				<title>Discography | One with the Riverbed</title>
+				<meta
+					name="description"
+					content="One with the Riverbed is a five-piece post-metal band from Kalamazoo, Michigan. Since in 2017, the band has strived to push the boundaries of the genre."
+				/>
 			</Head>
 			<section className="max-w-3xl mx-auto overflow-hidden">
 				<H1 title="Discography" />

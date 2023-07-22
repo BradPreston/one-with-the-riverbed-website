@@ -21,6 +21,10 @@ export default function Email() {
 		<>
 			<Head>
 				<title>Contact | One with the Riverbed</title>
+				<meta
+					name="description"
+					content="One with the Riverbed is a five-piece post-metal band from Kalamazoo, Michigan. Since in 2017, the band has strived to push the boundaries of the genre."
+				/>
 			</Head>
 			<section className="max-w-3xl mx-auto overflow-hidden text-sand flex items-center justify-center flex-col h-full">
 				<p>We just need to verify you&apos;re a real person</p>

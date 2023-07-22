@@ -19,6 +19,10 @@ export default function Home() {
 		<>
 			<Head>
 				<title>Home | One with the Riverbed</title>
+				<meta
+					name="description"
+					content="One with the Riverbed is a five-piece post-metal band from Kalamazoo, Michigan. Since in 2017, the band has strived to push the boundaries of the genre."
+				/>
 			</Head>
 			<div className="bg w-full h-screen flex items-center justify-center">
 				{isMobile === true ? (

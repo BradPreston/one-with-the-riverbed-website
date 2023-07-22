@@ -23,6 +23,10 @@ export default function Media() {
 		<>
 			<Head>
 				<title>Media | One with the Riverbed</title>
+				<meta
+					name="description"
+					content="One with the Riverbed is a five-piece post-metal band from Kalamazoo, Michigan. Since in 2017, the band has strived to push the boundaries of the genre."
+				/>
 			</Head>
 			<section className="max-w-3xl mx-auto">
 				<H1 title="Media" />
