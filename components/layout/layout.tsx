@@ -10,6 +10,18 @@ export default function Layout({ children }: { children: ReactElement }) {
 			</Head>
 			<Header />
 			<main>{children}</main>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify({
+						"@context": "http://schema.org",
+						"@type": "MusicGroup",
+						name: "One With the Riverbed",
+						url: "https://onewiththeriverbed.com",
+						logo: "https://onewiththeriverbed.com/images/home-bg.jpg"
+					})
+				}}
+			></script>
 		</>
 	)
 }
