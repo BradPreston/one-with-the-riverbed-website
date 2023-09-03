@@ -10,6 +10,7 @@ module.exports = {
 			sand: "#DCD7C9",
 			charcoal: "#2C3639",
 			white: "#FFFFFF",
+			error: "#ff6f6f",
 			trans_black: "rgba(0, 0, 0, .5)"
 		}
 	},

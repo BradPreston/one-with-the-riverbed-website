@@ -41,7 +41,7 @@ export default function EPK() {
 					type="password"
 					name="password"
 					onChange={(e) => setPasswordInput(e.target.value)}
-					className="mr-4 w-full py-2 px-5 rounded"
+					className="mr-4 mt-3 w-full py-2 px-5 rounded"
 					placeholder="password"
 				/>
 				<input
@@ -59,7 +59,7 @@ export default function EPK() {
 					value="Submit"
 				/>
 			</form>
-			<div className="absolute top-20" ref={passwordError}></div>
+			<div className="absolute top-20 text-error text-center" ref={passwordError}></div>
 		</div>
 	)
 }
