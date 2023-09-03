@@ -31,6 +31,23 @@ export default function Media() {
 			<section className="max-w-3xl mx-auto">
 				<H1 title="Media" />
 				<section className="text-center">
+					<H2 title="Promo Pictures" />
+					<div className={s.galleryGrid}>
+						{gallery.promo.map(({ link, id }: Photo) => (
+							<div className="aspect-video w-full relative" key={id}>
+								<Image
+									src={link}
+									alt={link}
+									fill
+									loading="lazy"
+									objectFit="cover"
+									onClick={() => setActiveImage(link)}
+								/>
+							</div>
+						))}
+					</div>
+				</section>
+				<section className="text-center">
 					<H2 title="Videos" />
 					<div className={s.galleryGrid}>
 						{gallery.videos.map(({ link }: Video) => (
@@ -49,23 +66,6 @@ export default function Media() {
 					<H2 title="Live Pictures" />
 					<div className={s.galleryGrid}>
 						{gallery.live.map(({ link, id }: Photo) => (
-							<div className="aspect-video w-full relative" key={id}>
-								<Image
-									src={link}
-									alt={link}
-									fill
-									loading="lazy"
-									objectFit="cover"
-									onClick={() => setActiveImage(link)}
-								/>
-							</div>
-						))}
-					</div>
-				</section>
-				<section className="text-center">
-					<H2 title="Promo Pictures" />
-					<div className={s.galleryGrid}>
-						{gallery.promo.map(({ link, id }: Photo) => (
 							<div className="aspect-video w-full relative" key={id}>
 								<Image
 									src={link}
