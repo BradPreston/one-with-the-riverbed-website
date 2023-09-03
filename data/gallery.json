@@ -1,7 +1,16 @@
 {
 	"promo": [
 		{
-			"link": ""
+			"id": "0ksdiw50",
+			"link": "/images/promo_1.png"
+		},
+		{
+			"id": "124lkspeb",
+			"link": "/images/promo_2.png"
+		},
+		{
+			"id": "683hiamp",
+			"link": "/images/promo_3.png"
 		}
 	],
 	"live": [

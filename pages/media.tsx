@@ -62,6 +62,23 @@ export default function Media() {
 						))}
 					</div>
 				</section>
+				<section className="text-center">
+					<H2 title="Promo Pictures" />
+					<div className={s.galleryGrid}>
+						{gallery.promo.map(({ link, id }: Photo) => (
+							<div className="aspect-video w-full relative" key={id}>
+								<Image
+									src={link}
+									alt={link}
+									fill
+									loading="lazy"
+									objectFit="cover"
+									onClick={() => setActiveImage(link)}
+								/>
+							</div>
+						))}
+					</div>
+				</section>
 			</section>
 			{activeImage ? <ImageModal link={activeImage} /> : null}
 		</>
