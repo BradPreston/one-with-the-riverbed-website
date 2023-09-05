@@ -12,6 +12,10 @@ module.exports = {
 			white: "#FFFFFF",
 			error: "#ff6f6f",
 			trans_black: "rgba(0, 0, 0, .5)"
+		},
+		aspectRatio: {
+			'4/3': '4 / 3',
+			'square': '1 / 1'
 		}
 	},
 	plugins: []
