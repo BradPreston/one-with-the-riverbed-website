@@ -11,43 +11,43 @@ type Props = {
 	data: song[]
 }
 
-export async function getStaticProps() {
-	const res = await fetch("https://owtr-api.onrender.com", {
-		headers: {
-			"x-api-key": process.env.API_KEY!
-		}
-	})
-	const data = await res.json()
+// export async function getStaticProps() {
+// 	const res = await fetch("https://owtr-api.onrender.com", {
+// 		headers: {
+// 			"x-api-key": process.env.API_KEY!
+// 		}
+// 	})
+// 	const data = await res.json()
 
-	return {
-		props: {
-			data
-		}
-	}
-}
+// 	return {
+// 		props: {
+// 			data
+// 		}
+// 	}
+// }
 
 export default function EPK({ data }: Props) {
 	const [showBio, setShowBio] = useState(false)
 	const [isMobile, setIsMobile] = useState(false)
 
 	const tracklist: song[] = [
-		{ title: "Infested" },
-		{ title: "Dominion" },
+		{ title: "Infested", url: "/music/Infested.wav" },
+		{ title: "Dominion", url: "/music/Dominion.wav" },
 		{ title: "Resolute" },
 		{ title: "Purified" },
 		{ title: "Adaptation" },
 		{ title: "Erode" },
-		{ title: "Burden" },
+		{ title: "Burden", url: "/music/Burden.wav" },
 		{ title: "Sunlight" }
 	]
 
-	for (let d of data) {
-		tracklist.forEach((track: song) => {
-			if (d.title === track.title) {
-				track.url = d.url
-			}
-		})
-	}
+	// for (let d of data) {
+	// 	tracklist.forEach((track: song) => {
+	// 		if (d.title === track.title) {
+	// 			track.url = d.url
+	// 		}
+	// 	})
+	// }
 
 	useEffect(() => {
 		const referrer = document.referrer.split("/")
@@ -73,6 +73,13 @@ export default function EPK({ data }: Props) {
 	function showOrHideBio() {
 		setShowBio(!showBio)
 	}
+
+	const testPlaylist: song[] = [
+		{
+			title: "Burden",
+			url: "/music/burden.wav"
+		}
+	]
 
 	return (
 		<>
@@ -131,7 +138,8 @@ export default function EPK({ data }: Props) {
 					>
 						<Image src="/images/succumb.jpg" alt={""} fill />
 					</div>
-					{data && <AudioPlayer playlist={tracklist}></AudioPlayer>}
+					{/* {data && <AudioPlayer playlist={testPlaylist}></AudioPlayer>} */}
+					{<AudioPlayer playlist={tracklist}></AudioPlayer>}
 				</div>
 
 				
