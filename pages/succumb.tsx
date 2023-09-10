@@ -49,12 +49,12 @@ export default function EPK({ data }: Props) {
 		})
 	}
 
-	useEffect(() => {
-		const referrer = document.referrer.split("/")
-		if (referrer[referrer.length - 1] !== "epk") {
-			window.location.pathname = "/epk"
-		}
-	}, [])
+	// useEffect(() => {
+	// 	const referrer = document.referrer.split("/")
+	// 	if (referrer[referrer.length - 1] !== "epk") {
+	// 		window.location.pathname = "/epk"
+	// 	}
+	// }, [])
 
 	useEffect(() => {
 		if (window.screen.width <= 767) {

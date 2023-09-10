@@ -17,23 +17,11 @@ export default function AudioPlayer({ playlist }: Props) {
 	const [isPlaying, setIsPlaying] = useState(false)
 	const [currentSong, setCurrentSong] = useState<song>()
 	const [songsWithUrls, setSongsWithUrls] = useState<song[]>()
+	let [currentSongIndex, setCurrentSongIndex] = useState(0);
 
 	// refs
 	const audioPlayer = useRef<HTMLAudioElement>(null) // reference audio component
 	const animationRef = useRef<number>() // references the animation
-
-	// useEffect
-	useEffect(() => {
-		if (currentSong && currentSong.url) {
-			audioPlayer.current!.src = currentSong.url
-
-			audioPlayer.current!.onloadedmetadata = function () {
-				const seconds = Math.floor(audioPlayer!.current!.duration)
-				setIsPlaying(true)
-				audioPlayer.current!.play()
-			}
-		}
-	}, [currentSong])
 
 	useEffect(() => {
 		const songs: song[] = []
@@ -41,7 +29,11 @@ export default function AudioPlayer({ playlist }: Props) {
 			if (song.url) songs.push(song)
 		})
 		setSongsWithUrls(songs)
-	}, [playlist])
+		setCurrentSong(songs[currentSongIndex])
+		if (currentSong && currentSong.url) {
+			audioPlayer.current!.src = currentSong.url;
+		}
+	}, [playlist, currentSong, currentSongIndex])
 
 	function togglePlayPause() {
 		if (audioPlayer.current!.src !== "") {
@@ -61,8 +53,18 @@ export default function AudioPlayer({ playlist }: Props) {
 
 	function whilePlaying() {
 		animationRef.current = requestAnimationFrame(whilePlaying)
-		if (audioPlayer.current?.currentTime === audioPlayer.current?.duration) {
-			setIsPlaying(false)
+
+		if (audioPlayer!.current?.ended) {
+			setCurrentSongIndex(++currentSongIndex)
+			if (currentSongIndex === songsWithUrls?.length) {
+				setIsPlaying(false);
+				audioPlayer.current?.pause();
+			} else {
+				setCurrentSong(songsWithUrls![currentSongIndex]);
+				setIsPlaying(true);
+				setTimeout(() => audioPlayer.current?.play(), 500);
+			}
+			
 		}
 	}
 
