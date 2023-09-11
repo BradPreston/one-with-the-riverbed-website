@@ -78,20 +78,38 @@ export default function AudioPlayer({ playlist }: Props) {
 
 	function prevSong() {
 		if (currentSong == songsWithUrls![0]) {
-			setCurrentSong(songsWithUrls![songsWithUrls!.length - 1])
+			setCurrentSongIndex(songsWithUrls!.length - 1);
+			setCurrentSong(songsWithUrls![currentSongIndex])
+			setIsPlaying(true);
+			setTimeout(() => audioPlayer.current?.play(), 500);
 		} else {
-			const currentIndex = songsWithUrls!.indexOf(currentSong!)
-			setCurrentSong(songsWithUrls![currentIndex - 1])
+			setCurrentSongIndex(--currentSongIndex);
+			setCurrentSong(songsWithUrls![currentSongIndex])
+			setIsPlaying(true);
+			setTimeout(() => audioPlayer.current?.play(), 500);
 		}
+	}
+
+	function chooseSong(song: song) {
+		setCurrentSongIndex(songsWithUrls!.indexOf(song))
+		setCurrentSong(songsWithUrls![currentSongIndex])
+		setIsPlaying(true);
+		setTimeout(() => audioPlayer.current?.play(), 500);
 	}
 
 	function nextSong() {
 		const currentIndex = songsWithUrls!.indexOf(currentSong!)
 
 		if (currentIndex === songsWithUrls!.length - 1) {
-			setCurrentSong(songsWithUrls![0])
+			setCurrentSongIndex(0);
+			setCurrentSong(songsWithUrls![currentSongIndex])
+			setIsPlaying(true);
+			setTimeout(() => audioPlayer.current?.play(), 500);
 		} else {
-			setCurrentSong(songsWithUrls![currentIndex + 1])
+			setCurrentSongIndex(++currentSongIndex);
+			setCurrentSong(songsWithUrls![currentSongIndex])
+			setIsPlaying(true);
+			setTimeout(() => audioPlayer.current?.play(), 500);
 		}
 	}
 
@@ -154,7 +172,7 @@ export default function AudioPlayer({ playlist }: Props) {
 							<li key={song.title}>
 								{song.url ? (
 									<button
-										onClick={() => setCurrentSong(song)}
+										onClick={() => chooseSong(song)}
 										className={styles.song}
 										title={`Play ${song.title}`}
 									>
