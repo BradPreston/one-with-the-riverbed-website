@@ -15,9 +15,9 @@ type Props = {
 export default function AudioPlayer({ playlist }: Props) {
 	// state
 	const [isPlaying, setIsPlaying] = useState(false)
-	const [currentSong, setCurrentSong] = useState<song>()
+	const [currentSong, setCurrentSong] = useState<song>(playlist[0])
 	const [songsWithUrls, setSongsWithUrls] = useState<song[]>()
-	let [currentSongIndex, setCurrentSongIndex] = useState(0);
+	let [currentSongIndex, setCurrentSongIndex] = useState(0)
 
 	// refs
 	const audioPlayer = useRef<HTMLAudioElement>(null) // reference audio component
@@ -29,11 +29,13 @@ export default function AudioPlayer({ playlist }: Props) {
 			if (song.url) songs.push(song)
 		})
 		setSongsWithUrls(songs)
-		setCurrentSong(songs[currentSongIndex])
+	}, [playlist])
+
+	useEffect(() => {
 		if (currentSong && currentSong.url) {
-			audioPlayer.current!.src = currentSong.url;
+			audioPlayer.current!.src = currentSong.url
 		}
-	}, [playlist, currentSong, currentSongIndex])
+	}, [currentSong])
 
 	function togglePlayPause() {
 		if (audioPlayer.current!.src !== "") {
@@ -53,18 +55,21 @@ export default function AudioPlayer({ playlist }: Props) {
 
 	function whilePlaying() {
 		animationRef.current = requestAnimationFrame(whilePlaying)
-
-		if (audioPlayer!.current?.ended) {
-			setCurrentSongIndex(++currentSongIndex)
-			if (currentSongIndex === songsWithUrls?.length) {
-				setIsPlaying(false);
-				audioPlayer.current?.pause();
-			} else {
-				setCurrentSong(songsWithUrls![currentSongIndex]);
-				setIsPlaying(true);
-				setTimeout(() => audioPlayer.current?.play(), 500);
+		if (audioPlayer.current!.title === "Burden") {
+			if (audioPlayer!.current?.ended) {
+				setIsPlaying(false)
+				cancelAnimationFrame(animationRef.current!)
+				setCurrentSongIndex(0)
+				setCurrentSong(songsWithUrls![0])
+				audioPlayer.current?.pause()
 			}
-			
+		} else {
+			if (audioPlayer!.current?.ended) {
+				setCurrentSongIndex(++currentSongIndex)
+				setCurrentSong(songsWithUrls![currentSongIndex])
+				setIsPlaying(true)
+				setTimeout(() => audioPlayer.current?.play(), 500)
+			}
 		}
 	}
 
@@ -77,41 +82,51 @@ export default function AudioPlayer({ playlist }: Props) {
 	}
 
 	function prevSong() {
+		animationRef.current = requestAnimationFrame(whilePlaying)
+
 		if (currentSong == songsWithUrls![0]) {
-			setCurrentSongIndex(songsWithUrls!.length - 1);
-			setCurrentSong(songsWithUrls![currentSongIndex])
-			setIsPlaying(true);
-			setTimeout(() => audioPlayer.current?.play(), 500);
+			setCurrentSongIndex(2)
+			setCurrentSong(songsWithUrls![2])
+			setIsPlaying(true)
+			setTimeout(() => audioPlayer.current?.play(), 500)
 		} else {
-			setCurrentSongIndex(--currentSongIndex);
+			setCurrentSongIndex(--currentSongIndex)
 			setCurrentSong(songsWithUrls![currentSongIndex])
-			setIsPlaying(true);
-			setTimeout(() => audioPlayer.current?.play(), 500);
+			setIsPlaying(true)
+			setTimeout(() => audioPlayer.current?.play(), 500)
 		}
 	}
 
 	function chooseSong(song: song) {
-		setCurrentSongIndex(songsWithUrls!.indexOf(song))
-		setCurrentSong(songsWithUrls![currentSongIndex])
-		setIsPlaying(true);
-		setTimeout(() => audioPlayer.current?.play(), 500);
+		animationRef.current = requestAnimationFrame(whilePlaying)
+		const currentIndex = songsWithUrls!.indexOf(song)
+		setCurrentSongIndex(currentIndex)
+		setCurrentSong(songsWithUrls![currentIndex])
+		setIsPlaying(true)
+		setTimeout(() => audioPlayer.current?.play(), 500)
 	}
 
 	function nextSong() {
+		animationRef.current = requestAnimationFrame(whilePlaying)
+
 		const currentIndex = songsWithUrls!.indexOf(currentSong!)
 
 		if (currentIndex === songsWithUrls!.length - 1) {
-			setCurrentSongIndex(0);
-			setCurrentSong(songsWithUrls![currentSongIndex])
-			setIsPlaying(true);
-			setTimeout(() => audioPlayer.current?.play(), 500);
+			setCurrentSongIndex(0)
+			setCurrentSong(songsWithUrls![0])
+			setIsPlaying(true)
+			setTimeout(() => audioPlayer.current?.play(), 500)
 		} else {
-			setCurrentSongIndex(++currentSongIndex);
+			setCurrentSongIndex(++currentSongIndex)
 			setCurrentSong(songsWithUrls![currentSongIndex])
-			setIsPlaying(true);
-			setTimeout(() => audioPlayer.current?.play(), 500);
+			setIsPlaying(true)
+			setTimeout(() => audioPlayer.current?.play(), 500)
 		}
 	}
+
+	// function skipToEnd() {
+	// 	audioPlayer.current!.currentTime = audioPlayer.current!.duration - 1
+	// }
 
 	return (
 		<div className={styles.audioPlayer}>
@@ -159,6 +174,7 @@ export default function AudioPlayer({ playlist }: Props) {
 						>
 							<FaStepForward />
 						</button>
+						{/* <button onClick={skipToEnd}>Skip to end</button> */}
 					</div>
 
 					<p className={styles.currentSong}>

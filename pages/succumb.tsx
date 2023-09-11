@@ -76,12 +76,17 @@ export default function EPK({ data }: Props) {
 
 	return (
 		<>
-		<div className="relative w-full max-w-3xl aspect-4/3 m-auto">
-				<Image src="/images/image-with-logo.png" alt="One with the riverbed promo picture" fill className="object-contain" />
-			</div>   
+			<div className="relative w-full max-w-3xl aspect-4/3 m-auto">
+				<Image
+					src="/images/image-with-logo.png"
+					alt="One with the riverbed promo picture"
+					fill
+					className="object-contain"
+				/>
+			</div>
 
 			<div id="bio" className="max-w-3xl flex flex-col m-auto mb-5 text-sand">
-			<p className="mb-5">
+				<p className="mb-5">
 					One with the Riverbed is a five-piece post-metal band from Kalamazoo,
 					Michigan. Since forming in 2017, the band has strived to push the
 					boundaries of the genre by incorporating elements of atmospheric black
@@ -94,22 +99,21 @@ export default function EPK({ data }: Props) {
 
 				{/* {showBio ? (
 					<> */}
-						<p className="mb-5">
-							In preparation of releasing their second full-length album,
-							Succumb, One with the Riverbed seeks collaboration with a label
-							that can provide distribution, promotion, and artist development.
-							With a distinct fusion of haunting melodies, visceral riffs, and
-							enveloping soundscapes, Succumb shows the band embracing their
-							core musical identity while venturing into previously unexplored
-							realms. Lyrical themes include nostalgia, temporality, and the
-							human condition.
-						</p>
+				<p className="mb-5">
+					In preparation of releasing their second full-length album, Succumb,
+					One with the Riverbed seeks collaboration with a label that can
+					provide distribution, promotion, and artist development. With a
+					distinct fusion of haunting melodies, visceral riffs, and enveloping
+					soundscapes, Succumb shows the band embracing their core musical
+					identity while venturing into previously unexplored realms. Lyrical
+					themes include nostalgia, temporality, and the human condition.
+				</p>
 
-						<p className="mb-5">
-							Thank you for your time and consideration. Select tracks from
-							Succumb are available to stream below.
-						</p>
-					{/* </>
+				<p className="mb-5">
+					Thank you for your time and consideration. Select tracks from Succumb
+					are available to stream below.
+				</p>
+				{/* </>
 				) : null} */}
 
 				{/* <button
@@ -133,8 +137,6 @@ export default function EPK({ data }: Props) {
 					</div>
 					{data && <AudioPlayer playlist={tracklist}></AudioPlayer>}
 				</div>
-
-				
 			</div>
 		</>
 	)
