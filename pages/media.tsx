@@ -34,7 +34,7 @@ export default function Media() {
 					<H2 title="Promo Pictures" />
 					<div className={s.galleryGrid}>
 						{gallery.promo.map(({ link, id }: Photo) => (
-							<div className="aspect-video w-full relative" key={id}>
+							<div className="aspect-[16/9] w-full relative" key={id}>
 								<Image
 									src={link}
 									alt={link}
@@ -53,7 +53,7 @@ export default function Media() {
 						{gallery.videos.map(({ link }: Video) => (
 							<iframe
 								key={link}
-								className="aspect-video w-full bg-black"
+								className="aspect-[16/9] w-full bg-black"
 								src={link}
 								title="YouTube video player"
 								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -66,14 +66,15 @@ export default function Media() {
 					<H2 title="Live Pictures" />
 					<div className={s.galleryGrid}>
 						{gallery.live.map(({ link, id }: Photo) => (
-							<div className="aspect-video w-full relative" key={id}>
+							<div className="aspect-[16/9] w-full relative" key={id}>
 								<Image
 									src={link}
 									alt={link}
 									fill
 									loading="lazy"
-									objectFit="cover"
+									// objectFit="cover"
 									onClick={() => setActiveImage(link)}
+									className="object-cover bg-black"
 								/>
 							</div>
 						))}
