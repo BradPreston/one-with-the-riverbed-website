@@ -7,19 +7,46 @@ type song = {
 	url?: string
 }
 
-export default function EPK() {
+type Props = {
+	data: song[]
+}
+
+export async function getStaticProps() {
+	const res = await fetch("https://owtr-api.onrender.com", {
+		headers: {
+			"x-api-key": process.env.API_KEY!
+		}
+	})
+	const data = await res.json()
+
+	return {
+		props: {
+			data
+		}
+	}
+}
+
+export default function EPK({ data }: Props) {
 	const [isMobile, setIsMobile] = useState(false)
 
 	const tracklist: song[] = [
-		{ title: "Infested", url: `${process.env.NEXT_PUBLIC_BLOB_URL!}/Infested.wav` },
-		{ title: "Dominion", url: `${process.env.NEXT_PUBLIC_BLOB_URL!}/Dominion.wav` },
+		{ title: "Infested" },
+		{ title: "Dominion" },
 		{ title: "Resolute" },
 		{ title: "Purified" },
 		{ title: "Adaptation" },
 		{ title: "Erode" },
-		{ title: "Burden", url: `${process.env.NEXT_PUBLIC_BLOB_URL!}/Burden.wav` },
+		{ title: "Burden" },
 		{ title: "Sunlight" }
 	]
+
+	for (let d of data) {
+		tracklist.forEach((track: song) => {
+			if (d.title === track.title) {
+				track.url = d.url
+			}
+		})
+	}
 
 	useEffect(() => {
 		const referrer = document.referrer.split("/")
@@ -92,7 +119,7 @@ export default function EPK() {
 					>
 						<Image src="/images/succumb.jpg" alt={""} fill />
 					</div>
-					<AudioPlayer playlist={tracklist}></AudioPlayer>
+					{data && <AudioPlayer playlist={tracklist}></AudioPlayer>}
 				</div>
 			</div>
 		</>
