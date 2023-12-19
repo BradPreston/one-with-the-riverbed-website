@@ -7,47 +7,19 @@ type song = {
 	url?: string
 }
 
-type Props = {
-	data: song[]
-}
-
-export async function getStaticProps() {
-	const res = await fetch("https://owtr-api.onrender.com", {
-		headers: {
-			"x-api-key": process.env.API_KEY!
-		}
-	})
-	const data = await res.json()
-
-	return {
-		props: {
-			data
-		}
-	}
-}
-
-export default function EPK({ data }: Props) {
-	const [showBio, setShowBio] = useState(false)
+export default function EPK() {
 	const [isMobile, setIsMobile] = useState(false)
 
 	const tracklist: song[] = [
-		{ title: "Infested" },
-		{ title: "Dominion" },
+		{ title: "Infested", url: `${process.env.NEXT_PUBLIC_BLOB_URL!}/Infested.wav` },
+		{ title: "Dominion", url: `${process.env.NEXT_PUBLIC_BLOB_URL!}/Dominion.wav` },
 		{ title: "Resolute" },
 		{ title: "Purified" },
 		{ title: "Adaptation" },
 		{ title: "Erode" },
-		{ title: "Burden" },
+		{ title: "Burden", url: `${process.env.NEXT_PUBLIC_BLOB_URL!}/Burden.wav` },
 		{ title: "Sunlight" }
 	]
-
-	for (let d of data) {
-		tracklist.forEach((track: song) => {
-			if (d.title === track.title) {
-				track.url = d.url
-			}
-		})
-	}
 
 	useEffect(() => {
 		const referrer = document.referrer.split("/")
@@ -69,10 +41,6 @@ export default function EPK({ data }: Props) {
 			}
 		})
 	}, [])
-
-	function showOrHideBio() {
-		setShowBio(!showBio)
-	}
 
 	return (
 		<>
@@ -97,8 +65,6 @@ export default function EPK({ data }: Props) {
 					ov Hell.{" "}
 				</p>
 
-				{/* {showBio ? (
-					<> */}
 				<p className="mb-5">
 					In preparation of releasing their second full-length album, Succumb,
 					One with the Riverbed seeks collaboration with a label that can
@@ -113,15 +79,6 @@ export default function EPK({ data }: Props) {
 					Thank you for your time and consideration. Select tracks from Succumb
 					are available to stream below.
 				</p>
-				{/* </>
-				) : null} */}
-
-				{/* <button
-					className="mx-auto flex mb-5 text-sand underline"
-					onClick={showOrHideBio}
-				>
-					Show {showBio ? "Less" : "More"}
-				</button> */}
 
 				<div
 					className={`flex ${
@@ -135,7 +92,7 @@ export default function EPK({ data }: Props) {
 					>
 						<Image src="/images/succumb.jpg" alt={""} fill />
 					</div>
-					{data && <AudioPlayer playlist={tracklist}></AudioPlayer>}
+					<AudioPlayer playlist={tracklist}></AudioPlayer>
 				</div>
 			</div>
 		</>
