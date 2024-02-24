@@ -16,39 +16,48 @@
 	"live": [
 		{
 			"id": "fhe58a2",
-			"link": "/images/live_1.jpg"
+			"link": "/images/live_1.jpg",
+			"photographer": "Ryan Fluke"
 		},
 		{
 			"id": "80skh38a",
-			"link": "/images/live_2.jpg"
+			"link": "/images/live_2.jpg",
+			"photographer": "Teagan Felerski"
 		},
 		{
 			"id": "23hf901l",
-			"link": "/images/live_3.jpg"
+			"link": "/images/live_3.jpg",
+			"photographer": null
 		},
 		{
 			"id": "2906jhlq",
-			"link": "/images/live_4.jpg"
+			"link": "/images/live_4.jpg",
+			"photographer": "Ryan Fluke"
 		},
 		{
 			"id": "1830acke",
-			"link": "/images/live_5.jpg"
+			"link": "/images/live_5.jpg",
+			"photographer": "Cam Truppa"
 		},
 		{
 			"id": "0opavhwk4",
-			"link": "/images/live_6.jpg"
+			"link": "/images/live_6.jpg",
+			"photographer":"Teagan Felerski"
 		},
 		{
 			"id": "0panw287b",
-			"link": "/images/live_7.jpg"
+			"link": "/images/live_7.jpg",
+			"photographer": "Ryan Fluke"
 		},
 		{
 			"id": "mcnaek395",
-			"link": "/images/live_8.jpg"
+			"link": "/images/live_8.jpg",
+			"photographer": null
 		},
 		{
 			"id": "plam265sz",
-			"link": "/images/live_9.jpg"
+			"link": "/images/live_9.jpg",
+			"photographer": "Pine Forest Photography"
 		}
 	],
 	"videos": [
