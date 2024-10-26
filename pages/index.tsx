@@ -20,6 +20,7 @@ export default function Home() {
 						src="/logo-2023.png"
 						alt="One with the Riverbed Logo"
 						fill
+						loading="eager"
 						objectFit="contain"
 					/>
 				</div>
@@ -31,6 +32,7 @@ export default function Home() {
 						src="/images/succumb.jpg"
 						alt="Succumb album cover"
 						fill
+						loading="eager"
 						objectFit="contain"
 					/>
 				</div>
@@ -49,7 +51,7 @@ export default function Home() {
 				{/* end text */}
 
 				{/* start streaming icons */}
-				<div className="flex w-full relative justify-between gap-[8vw] max-w-[300px] md:gap-[4vw]">
+				<div className="flex w-full relative justify-between gap-[8vw] max-w-[300px] md:gap-[4vw] md:mb-24">
 					<Link
 						href="https://open.spotify.com/album/45CxVS0nej0EEl9qap5UBZ?si=_pvzTtOsTluw_weatXiKVQ"
 						title="Stream Succumb on Spotify"
