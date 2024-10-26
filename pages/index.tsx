@@ -13,7 +13,7 @@ export default function Home() {
 					content="One with the Riverbed is a five-piece post-metal band from Kalamazoo, Michigan. Since in 2017, the band has strived to push the boundaries of the genre."
 				/>
 			</Head>
-			<div className="bg w-full flex flex-col items-center justify-center px-24 py-24 overflow-y-auto">
+			<div className="bg w-full flex flex-col items-center justify-center px-24 overflow-y-auto">
 				{/* Start mobile logo */}
 				<div className="relative w-40 h-40 mb-4 md:hidden">
 					<Image
