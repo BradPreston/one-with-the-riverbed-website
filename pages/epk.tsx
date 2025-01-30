@@ -26,8 +26,8 @@ export default function EPK() {
 					milestone for the band, earning international acclaim from
 					publications like Metal Hammer, No Clean Singing, and Toilet ov Hell.
 					Building on the momentum of their 2018 EP, Absence showcased the
-					band's ability to craft immersive, genre-defying music that resonates
-					deeply with listeners.
+					band&apos;s ability to craft immersive, genre-defying music that
+					resonates deeply with listeners.
 				</p>
 
 				<p className="mb-5">
