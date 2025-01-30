@@ -1,5 +1,35 @@
 [
 	{
+		"title": "Succumb",
+		"tracklist": [
+			"Infested",
+			"Dominion",
+			"Resolute",
+			"Purified",
+			"Adaptation",
+			"Erode",
+			"Burden",
+			"Sunlight"
+		],
+		"release_date": "October 2024 via Dusktone",
+		"artwork_artist": "Giuseppe Funnone",
+		"logo_artist": "Christophe Szpajdel",
+		"studio": "Recorded, mixed, and mastered at Raygun Recording Studio",
+		"album_image_src": "/images/succumb.jpg",
+		"reviews": [
+			{
+				"author": "Hotel Hobbies",
+				"review_link": "https://www.hotelhobbies.com/post/album-review-one-with-the-riverbed-succumb-2024-dusktone",
+				"excerpt": "Succumb masterfully blends the different genres it inhabits. Seamless transitions between blistering riffs and ghostly passages create a dynamic experience, enhanced by layered guitar work and varied vocal styles"
+			},
+			{
+				"author": "No Clean Singing",
+				"review_link": "https://www.nocleansinging.com/2024/10/02/an-ncs-video-premiere-one-with-the-riverbed-infested/",
+				"excerpt": "The storm suddenly, but only briefly, ceases. After that soft and mysterious interlude, the ensuing attack sounds furious, with drums hammering, a heavy bass throbbing, and the guitars soaring and sweeping"
+			}
+		]
+	},
+	{
 		"title": "Absence",
 		"tracklist": [
 			"Thaw",
