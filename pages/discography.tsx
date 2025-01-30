@@ -14,7 +14,7 @@ export default function Discography() {
 					content="One with the Riverbed is a five-piece post-metal band from Kalamazoo, Michigan. Since in 2017, the band has strived to push the boundaries of the genre."
 				/>
 			</Head>
-			<section className="max-w-3xl mx-auto overflow-hidden">
+			<section className="max-w-3xl mx-auto">
 				<H1 title="Discography" />
 				<>
 					{albums.map((album: AlbumType) => (
