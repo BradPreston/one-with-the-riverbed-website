@@ -62,8 +62,8 @@ main {
 
 .bg {
 	background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-		url("/images/home-bg.jpg");
-	background-position: 40% center;
+		url("/images/owtr_home_portrait.jpg");
+	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
 	top: 0;
@@ -91,7 +91,7 @@ svg {
 .hideBio {
 	height: 300px;
 	overflow: hidden;
-	transition: all .5s;
+	transition: all 0.5s;
 }
 
 @media only screen and (min-width: 600px) {

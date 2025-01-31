@@ -13,6 +13,9 @@ export default function Home() {
 					content="One with the Riverbed is a five-piece post-metal band from Kalamazoo, Michigan. Since in 2017, the band has strived to push the boundaries of the genre."
 				/>
 			</Head>
+			<p className="fixed bottom-2 left-2 md:top-2 md:right-2 md:left-auto text-sm text-sand z-50 opacity-50">
+				Photo by Dr. Polish Matt Photography
+			</p>
 			<div className="bg w-full flex flex-col items-center justify-center px-24 overflow-y-auto">
 				{/* Start mobile logo */}
 				<div className="relative w-40 h-40 mb-4 md:hidden">
@@ -39,19 +42,16 @@ export default function Home() {
 				{/* end album cover */}
 
 				{/* start text */}
-				<div className="mb-4">
-					<H2
-						title="AVAILABLE NOW"
-						style="text-[6.9vw] md:text-[2.7vw] text-center"
-					/>
-					<p className="text-sand text-[3.1vw] text-center md:text-[1.25vw]">
+				<div className="my-4">
+					<H2 title="AVAILABLE NOW" style=" text-xl md:text-5xl text-center" />
+					<p className="text-sand text-xs text-center md:text-xl">
 						Listen now on all streaming platforms
 					</p>
 				</div>
 				{/* end text */}
 
 				{/* start streaming icons */}
-				<div className="flex w-full relative justify-between gap-[8vw] max-w-[300px] md:gap-[4vw] md:mb-24">
+				<div className="flex w-full relative justify-between gap-[8vw] max-w-[300px] md:gap-16 md:mb-24">
 					<Link
 						href="https://open.spotify.com/album/45CxVS0nej0EEl9qap5UBZ?si=_pvzTtOsTluw_weatXiKVQ"
 						title="Stream Succumb on Spotify"
