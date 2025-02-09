@@ -13,6 +13,28 @@
 			"link": "/images/promo_3.png"
 		}
 	],
+	"flyers": [
+		{
+			"id": "018xh3j",
+			"link": "/images/autumn-2024-tour.png",
+			"photographer": null
+		},
+		{
+			"id": "ajpiehvg",
+			"link": "/images/summer-2024-tour.png",
+			"photographer": null
+		},
+		{
+			"id": "jiwoe82b",
+			"link": "/images/summer-2023-tour.jpg",
+			"photographer": null
+		},
+		{
+			"id": "uioxhwg0",
+			"link": "/images/summer-2022-tour.jpg",
+			"photographer": null
+		}
+	],
 	"live": [
 		{
 			"id": "fhe58a2",
@@ -42,7 +64,7 @@
 		{
 			"id": "0opavhwk4",
 			"link": "/images/live_6.jpg",
-			"photographer":"Teagan Felerski"
+			"photographer": "Teagan Felerski"
 		},
 		{
 			"id": "0panw287b",
