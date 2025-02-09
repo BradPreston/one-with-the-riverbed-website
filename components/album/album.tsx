@@ -5,7 +5,7 @@ import { ButtonBase } from "../buttons"
 
 export default function Album(album: AlbumType) {
 	return (
-		<>
+		<div className="mb-16">
 			<section className="max-w-3xl mx-auto grid mb-3 text-sand grid-cols-2 max-[400px]:grid-cols-1">
 				<div className="aspect-square w-full relative">
 					<Image
@@ -38,29 +38,6 @@ export default function Album(album: AlbumType) {
 				{album.logo_artist ? <p>Logo Artist: {album.logo_artist}</p> : null}
 				<p>{album.studio}</p>
 			</section>
-			<section className="max-w-3xl mx-auto mb-10">
-				<H2 style="pb-3" title="Reviews" />
-				<ul
-					className={`grid ${
-						album.reviews.length > 1 ? "sm:grid-cols-2" : null
-					} gap-4`}
-				>
-					{album.reviews.map((review: Review) => (
-						<li key={review.review_link} className="mb-10">
-							<H3 style="text-md" title={review.author} />
-							<p className="mb-5 text-sand">
-								{review.excerpt.slice(0, 120) + "..."}
-							</p>
-							<ButtonBase
-								style="text-sm"
-								href={review.review_link}
-								target="_blank"
-								title="View More"
-							/>
-						</li>
-					))}
-				</ul>
-			</section>
-		</>
+		</div>
 	)
 }

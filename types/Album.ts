@@ -7,7 +7,6 @@ export type AlbumType = {
 	artwork_artist: string
 	logo_artist: string
 	album_image_src: string
-	reviews: Review[]
 }
 
 export type Review = {
