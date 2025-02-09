@@ -159,7 +159,7 @@ export default function EPK() {
 				<iframe
 					src="https://open.spotify.com/embed/playlist/6wzlFCED67WfdoTr2tCibR?utm_source=generator"
 					width="100%"
-					height="630"
+					height="400"
 					allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
 					loading="lazy"
 					className="rounded-2xl mb-10"
@@ -167,7 +167,7 @@ export default function EPK() {
 
 				<section className="mb-10">
 					<h2 className="text-center text-2xl mb-2">Tour Flyers</h2>
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+					<div className="grid grid-cols-2 md:grid-cols-4 gap-5">
 						{gallery.flyers.map(({ link, id }: Photo) => (
 							<div
 								className="aspect-square w-full relative cursor-pointer"
