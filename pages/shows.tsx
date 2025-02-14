@@ -8,12 +8,19 @@ import Head from "next/head"
 
 export default function Shows() {
 	const [data, setData] = useState<APIShow[] | null>(null)
+	const [fetching, setFetching] = useState(true)
 
 	useEffect(() => {
+		setFetching(true)
 		fetch("/api/getShowDates")
 			.then((res) => res.json())
 			.then((data) => {
-				setData(data)
+				if (data.length) {
+					setData(data)
+				} else {
+					setData(null)
+				}
+				setFetching(false)
 			})
 	}, [])
 
@@ -44,7 +51,9 @@ export default function Shows() {
 			</Head>
 			<section className="max-w-3xl mx-auto">
 				<H1 title="Show Dates" />
-				{data ? (
+				{fetching ? (
+					<Spinner />
+				) : data ? (
 					<ul>
 						{showDates?.map((show: Show) => (
 							<li key={show.id}>
@@ -58,7 +67,7 @@ export default function Shows() {
 						))}
 					</ul>
 				) : (
-					<Spinner />
+					<p className="text-sand text-xl text-center">No upcoming shows.</p>
 				)}
 			</section>
 		</>
