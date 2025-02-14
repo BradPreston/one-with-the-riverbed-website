@@ -16,16 +16,22 @@
 		"logo_artist": "Christophe Szpajdel",
 		"studio": "Recorded, mixed, and mastered at Raygun Recording Studio",
 		"album_image_src": "/images/succumb.jpg",
-		"reviews": [
+		"streaming_links": [
 			{
-				"author": "Hotel Hobbies",
-				"review_link": "https://www.hotelhobbies.com/post/album-review-one-with-the-riverbed-succumb-2024-dusktone",
-				"excerpt": "Succumb masterfully blends the different genres it inhabits. Seamless transitions between blistering riffs and ghostly passages create a dynamic experience, enhanced by layered guitar work and varied vocal styles"
+				"src": "bandcamp",
+				"link": "https://onewiththeriverbed.bandcamp.com/album/succumb"
 			},
 			{
-				"author": "No Clean Singing",
-				"review_link": "https://www.nocleansinging.com/2024/10/02/an-ncs-video-premiere-one-with-the-riverbed-infested/",
-				"excerpt": "The storm suddenly, but only briefly, ceases. After that soft and mysterious interlude, the ensuing attack sounds furious, with drums hammering, a heavy bass throbbing, and the guitars soaring and sweeping"
+				"src": "apple-music",
+				"link": "https://music.apple.com/us/album/succumb/1775686654"
+			},
+			{
+				"src": "youtube-music",
+				"link": "https://music.youtube.com/playlist?list=OLAK5uy_mmH0ODN79RXsCd-N_10tgXYoydvJUPkfc&si=WCb7RHVtRO_yEttohttps://music.youtube.com/playlist?list=OLAK5uy_mmH0ODN79RXsCd-N_10tgXYoydvJUPkfc&si=WCb7RHVtRO_yEtto"
+			},
+			{
+				"src": "spotify",
+				"link": "https://open.spotify.com/album/45CxVS0nej0EEl9qap5UBZ?si=_pvzTtOsTluw_weatXiKVQ"
 			}
 		]
 	},
@@ -44,33 +50,56 @@
 		"artwork_artist": "La Dama Luna",
 		"logo_artist": "John Brogger III",
 		"album_image_src": "/absence.jpg",
-		"reviews": [
+		"streaming_links": [
 			{
-				"author": "Metal Temple",
-				"review_link": "https://metal-temple.com/review/one-with-the-riverbed-absence/",
-				"excerpt": "Since forming in 2017, the band has strived to push the boundaries of the genre by incorporating elements of Atmospheric"
+				"src": "bandcamp",
+				"link": "https://onewiththeriverbed.bandcamp.com/album/absence"
 			},
 			{
-				"author": "Metal Hammer UK",
-				"review_link": "https://www.pressreader.com/uk/metal-hammer-uk/20210819/283145726790632",
-				"excerpt": "It's a dynamic journey through wild expanses that proves the destination is often less important than the journey itself"
+				"src": "apple-music",
+				"link": "https://music.apple.com/us/album/absence/1768846145"
+			},
+			{
+				"src": "youtube-music",
+				"link": "https://music.youtube.com/playlist?list=OLAK5uy_muY1JbGjJzDmrByLi3K_ikZeWs65yXDfw"
+			},
+			{
+				"src": "spotify",
+				"link": "https://open.spotify.com/album/22hijTjJYq8SAolfrQtwf4"
 			}
 		]
 	},
 	{
 		"title": "Solace",
-		"tracklist": ["Wither", "Apparition", "Parasitic", "Blossom", "Solace"],
+		"tracklist": [
+			"Wither",
+			"Apparition",
+			"Parasitic",
+			"Blossom",
+			"Solace"
+		],
 		"release_date": "October 2018",
 		"studio": "Recorded at Raygun Recording Studio",
 		"features": "",
 		"artwork_artist": "Katie Calvert",
 		"logo_artist": "",
 		"album_image_src": "/solace.jpg",
-		"reviews": [
+		"streaming_links": [
 			{
-				"author": "Łabandzi Śpiew",
-				"review_link": "https://labandzi.blogspot.com/2018/11/one-with-riverbed-solace-2018-en.html",
-				"excerpt": "Atmospheric name, atmospheric logo, atmospheric views of Michigan nature on the cover art, this is the American One With The Riverbed combining in their music atmosphere with the straightforwardness and aggression of experimental metal"
+				"src": "bandcamp",
+				"link": "https://onewiththeriverbed.bandcamp.com/album/solace"
+			},
+			{
+				"src": "apple-music",
+				"link": "https://music.apple.com/us/album/solace-ep/1768077789"
+			},
+			{
+				"src": "youtube-music",
+				"link": "https://music.youtube.com/playlist?list=OLAK5uy_lPL4GD6Y638HQcqKejg8emNvzSgDgmHJQ"
+			},
+			{
+				"src": "spotify",
+				"link": "https://open.spotify.com/album/1YmUog9ak0pZ6a4UL6Q9rB"
 			}
 		]
 	}

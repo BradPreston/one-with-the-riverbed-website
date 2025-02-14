@@ -7,10 +7,10 @@ export type AlbumType = {
 	artwork_artist: string
 	logo_artist: string
 	album_image_src: string
+	streaming_links?: StreamingLink[]
 }
 
-export type Review = {
-	author: string
-	review_link: string
-	excerpt: string
+type StreamingLink = {
+	src: 'youtube-music' | 'apple-music' | 'spotify'
+	link: string
 }

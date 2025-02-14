@@ -28,6 +28,7 @@ export default function Discography() {
 							studio={album.studio}
 							album_image_src={album.album_image_src}
 							tracklist={album.tracklist}
+							streaming_links={album.streaming_links}
 						/>
 					))}
 				</>
